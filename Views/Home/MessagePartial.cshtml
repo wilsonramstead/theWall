@@ -1,0 +1,20 @@
+
+@model Message
+
+<div class="header">
+    <h1>CodingDojo Wall</h1>
+    <div class="headright">
+        <h5>Welcome, @ViewBag.CurrentUser.FirstName</h5>
+        <a href="/logout">Log Out</a>
+    </div>
+</div>
+
+<div class="form">
+    <form asp-action="CreateMessage" asp-controller="Home" method="POST">
+        <span asp-validation-for="Content"></span>
+        <p><label for="message">Post a message</label></p>
+        <p><textarea asp-for="Content" id="message" rows="6" cols = "150"></textarea></p>
+        <input asp-for="UserID" value="@ViewBag.CurrentUser.UserID" type="hidden">
+        <input class="btn btn-primary" type="Submit" value="Post message">
+    </form>
+</div>

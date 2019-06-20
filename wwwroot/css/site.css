@@ -1,0 +1,96 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+.header {
+    width: 100%;
+    border-bottom: 2px solid black;
+}
+
+.left {
+    width: 49%;
+    display: inline-block;
+    
+}
+
+.right {
+    width: 49%;
+    display: inline-block;
+    vertical-align: top;
+}
+.form h2 {
+    margin-left: 10%;
+}
+.form p {
+    margin: 20px 0px 20px 0px;
+}
+.headright {
+    width: 69%;
+    text-align: right;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.headright a, h5{
+    display: inline-block;
+
+}
+.header h1 {
+    display: inline-block;
+}
+.header a {
+    text-decoration: underline;
+    font-size: 18px;
+    display: inline-block;
+    margin-left: 5%;
+}
+
+button a {
+    color: white;
+}
+
+.content {
+    margin-left: 3%;
+    width: 92%;
+    font-size: 16px;
+}
+.comments {
+    margin-left: 6%;
+}
+.comContent {
+    margin-top: 25px;
+    margin-left: 6%;
+}
