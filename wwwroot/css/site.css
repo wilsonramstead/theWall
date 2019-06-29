@@ -43,16 +43,23 @@ body {
 .left {
     width: 49%;
     display: inline-block;
-    
+    padding-left: 8%;
 }
-
 .right {
-    width: 49%;
+    width: 35%;
     display: inline-block;
     vertical-align: top;
+    padding-left: 5%;
 }
+
 .form h2 {
+    margin-left: 14%;
+    color: red;
+}
+.form input {
+    width: 50%;
     margin-left: 10%;
+    float: right;
 }
 .form p {
     margin: 20px 0px 20px 0px;
@@ -64,9 +71,11 @@ body {
     vertical-align: bottom;
 }
 
-.headright a, h5{
+.headright a, h4{
     display: inline-block;
-
+}
+.headright a {
+    color: red;
 }
 .header h1 {
     display: inline-block;
@@ -93,4 +102,27 @@ button a {
 .comContent {
     margin-top: 25px;
     margin-left: 6%;
+}
+.theWall {
+    border-bottom: 2px solid black;
+    background-color: navy;
+    color: white;
+    width: 100%;
+    padding-left: 2%;
+}
+
+.body {
+    background-color: bisque;
+    min-height: 700px;
+    width: 100%;
+    padding-top: 10px;
+    padding-left: 2%;
+    padding-bottom: 20px;    
+}
+
+.bodyPost {
+    background-color: silver;
+    height: 250px;
+    padding-left: 2%;
+    padding-top: 10px;
 }
