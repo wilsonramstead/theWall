@@ -33,5 +33,6 @@ namespace theWall.Models
 
         public List<Comment> Comments {get;set;}
         public List<Message> allMessages {get;set;}
+        public List<UserGroup> allGroups {get;set;}
     }
 }

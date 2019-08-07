@@ -42,6 +42,18 @@ namespace theWall.Migrations
                     b.ToTable("Comments");
                 });
 
+            modelBuilder.Entity("theWall.Models.Group", b =>
+                {
+                    b.Property<int>("GroupID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("name");
+
+                    b.HasKey("GroupID");
+
+                    b.ToTable("Groups");
+                });
+
             modelBuilder.Entity("theWall.Models.Message", b =>
                 {
                     b.Property<int>("MessageID")
@@ -56,9 +68,13 @@ namespace theWall.Migrations
 
                     b.Property<int>("UserID");
 
+                    b.Property<int?>("thisGroupGroupID");
+
                     b.HasKey("MessageID");
 
                     b.HasIndex("UserID");
+
+                    b.HasIndex("thisGroupGroupID");
 
                     b.ToTable("Messages");
                 });
@@ -89,6 +105,24 @@ namespace theWall.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("theWall.Models.UserGroup", b =>
+                {
+                    b.Property<int>("UserGroupID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("GroupID");
+
+                    b.Property<int>("UserID");
+
+                    b.HasKey("UserGroupID");
+
+                    b.HasIndex("GroupID");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("UserGroups");
+                });
+
             modelBuilder.Entity("theWall.Models.Comment", b =>
                 {
                     b.HasOne("theWall.Models.Message", "Message")
@@ -106,6 +140,23 @@ namespace theWall.Migrations
                 {
                     b.HasOne("theWall.Models.User", "Creator")
                         .WithMany("allMessages")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("theWall.Models.Group", "thisGroup")
+                        .WithMany("GroupMessages")
+                        .HasForeignKey("thisGroupGroupID");
+                });
+
+            modelBuilder.Entity("theWall.Models.UserGroup", b =>
+                {
+                    b.HasOne("theWall.Models.Group", "Group")
+                        .WithMany("GroupUsers")
+                        .HasForeignKey("GroupID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("theWall.Models.User", "User")
+                        .WithMany("allGroups")
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

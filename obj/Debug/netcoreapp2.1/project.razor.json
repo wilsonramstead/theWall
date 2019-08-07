@@ -1,5 +1,5 @@
 {
-  "FilePath": "/Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/theWall.csproj",
+  "FilePath": "c:\\Users\\ryan\\Desktop\\CodingDojo\\PersonalProjects\\theWall\\theWall.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-2.1",
     "LanguageVersion": "2.1",
@@ -2857,5 +2857,6 @@
     "CSharpLanguageVersion": 703
   },
   "RootNamespace": "theWall",
-  "Documents": []
+  "Documents": [],
+  "SerializationFormat": "0.1"
 }
