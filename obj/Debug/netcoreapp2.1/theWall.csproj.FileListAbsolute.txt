@@ -27,3 +27,4 @@
 /Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/theWall.csproj.CopyComplete
 /Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/Dashboard.g.cshtml.cs
 /Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/MessagePartial.g.cshtml.cs
+/Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/newsFeedPartial.g.cshtml.cs

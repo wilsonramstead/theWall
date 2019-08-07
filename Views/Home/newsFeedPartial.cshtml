@@ -1,0 +1,46 @@
+
+@model Comment
+
+<div class="body">
+    <div class="messages">
+        @{
+            if(ViewBag.allMessages == null)
+            {
+        
+            }
+            else
+            {
+                foreach(Message m in ViewBag.allMessages)
+                {
+                    var date = m.CreatedAt.ToString("MMMM dd yyyy");
+                    <h4>@m.Creator.FirstName @m.Creator.LastName - @date</h4>
+                    <p class="content">@m.Content</p>
+                    
+        
+                    if(@m.Comments != null)
+                    {
+                        <p class="comContent">Comments: </p>
+                        foreach(Comment c in m.Comments)
+                        {
+                            var commentDATE = c.CreatedAt.ToString("MMMM dd yyyy");
+                            <div class="comContent">
+                                <h4>@c.User.FirstName @c.User.LastName- @commentDATE</h4>
+                                <p>@c.comContent</p>
+                            </div>
+                        }
+                    }
+                    <div class="comments">
+                        <form asp-action="createcomment" asp-controller="Home" method="POST">
+                            <span asp-validation-for="comContent"></span>
+                            <p><label for="comment">Post a comment</label></p> 
+                            <p><textarea asp-for="comContent" id="comment" cols="100" rows="3"></textarea></p>
+                            <input asp-for="MessageID" value="@m.MessageID" type="hidden">
+                            <input asp-for="UserID" value="@ViewBag.CurrentUser.UserID" type="hidden">
+                            <input class="btn btn-success" type="submit" value="Post comment">
+                        </form>
+                    </div>   
+                }
+            }
+        }
+        </div>
+</div>
