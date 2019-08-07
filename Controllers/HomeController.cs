@@ -170,5 +170,11 @@ namespace theWall.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Index");
         }
+
+        [HttpGet("account")]
+        public IActionResult Account()
+        {
+            return View("accountPage");
+        }
     }
 }
