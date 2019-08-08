@@ -1,0 +1,22 @@
+
+<link href="https://fonts.googleapis.com/css?family=Blinker|Montserrat|Red+Hat+Display|Roboto+Slab&display=swap" rel="stylesheet">
+
+<div class="theWall">
+    <div class="header">
+        <h1>The Wall</h1>
+        <div class="headright">
+            <h4>Welcome, @ViewBag.CurrentUser.FirstName</h4>
+            <a href="/logout">Log Out</a>
+        </div>
+    </div>
+</div>
+
+<nav id="navbar" class="navbar-dark">
+    <div class="tags">
+        <ul>
+            <li><a href="/dashboard/@ViewBag.CurrentUser.UserID">News Feed</a></li>
+            <li><a href="">Messaging</a></li>
+            <li><a href="/account/@ViewBag.CurrentUser.UserID">MyPage</a></li>
+        </ul>
+    </div>
+</nav>

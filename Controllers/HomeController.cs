@@ -171,10 +171,37 @@ namespace theWall.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet("account")]
-        public IActionResult Account()
+        [HttpGet("/account/{userID:int}")]
+        public IActionResult Account(int userID)
         {
-            return View("accountPage");
+            var num = 5;
+            if(HttpContext.Session.GetInt32("loggeduser") == userID)
+            {
+                bool edit = false;
+                // int num = 10;   
+                System.Console.WriteLine("num: ", num);
+                ViewBag.edit = edit;
+                System.Console.WriteLine("edit: ", edit);
+                System.Console.WriteLine("!!!!: ", ViewBag.edit);
+                User user = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
+                ViewBag.CurrentUser = user;
+
+                List<Message> allMessages = dbContext.Messages
+                    .Where(m => m.Creator.UserID == userID)
+                    .Include(m => m.Creator)
+                    .Include(m => m.Comments)
+                    .ThenInclude(c => c.User)
+                    .OrderByDescending(m => m.CreatedAt)
+                    .ToList();
+                ViewBag.allMessages = allMessages;
+                return View("accountPage");
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
+
+        // [HttpGet("/account/")]
     }
 }

@@ -1,3 +1,27 @@
 
 
-<h1>Hello World!</h1>
+<div class="wrapper">
+    <partial name="headerPartial" view-data="ViewData"/>
+
+    <div class="body">
+        @{
+            if(ViewBag.edit == false) {
+                <div class="pic"></div>
+                <div class="userInfo">
+                    <a class="editBtn">Edit</a>
+                    <h4>Name: </h4>
+                    <h2>@ViewBag.CurrentUser.FirstName @ViewBag.CurrentUser.LastName</h2>
+                    <h4>Bio: </h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor possimus numquam eius accusamus voluptate hic eos molestiae illo, molestias sed quasi consectetur architecto harum vitae!</p>
+                    <button class="btn button">0 | Connections</button>
+                </div>
+            } else {
+                <p>Nah blud</p>
+            }
+        }
+
+        <!-- <h3 class="activity">Activity</h3> -->
+        <hr>
+        <partial name="newsFeedPartial" view-data="ViewData"/>
+    </div>
+</div>
