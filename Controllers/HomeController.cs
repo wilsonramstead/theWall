@@ -202,6 +202,24 @@ namespace theWall.Controllers
             }
         }
 
+        [HttpGet("connections/{userID:int}")]
+        public IActionResult Connections(int userID)
+        {
+            if(HttpContext.Session.GetInt32("loggeduser") == userID)
+            {
+                User user = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
+                ViewBag.CurrentUser = user;
+                
+                List<User> allConnections = dbContext.Users.ToList(); //needs to change from all users to all user connections
+                ViewBag.allConn = allConnections;
+                return View("Connections");
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
         // [HttpGet("/account/")]
     }
 }
