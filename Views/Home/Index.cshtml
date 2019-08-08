@@ -1,33 +1,33 @@
 ﻿@model User
 
-<div class="container theWall">
-    <h1>The Wall</h1>
-</div>
-
-
-<div class="body">
-    <div class="left">
-        <div class="form">
-            <h2>Register</h2>
-            <form asp-action="register" asp-controller="Home" method="POST">
-                <span asp-validation-for="FirstName"></span>
-                <p><label for="fname">First Name: </label>
-                <input asp-for="FirstName" id="fname" type="text"></p>
-                <span asp-validation-for="LastName"></span>
-                <p><label for="lname">Last Name: </label>
-                <input asp-for="LastName" id="lname" type="text"></p>
-                <span asp-validation-for="Email"></span>
-                <p><label for="email">Email: </label>
-                <input asp-for="Email" id="email" type="text"></p>
-                <span asp-validation-for="Password"></span>
-                <p><label for="pword">Password: </label>
-                <input asp-for="Password" id="pword" type="password"></p>
-                <span asp-validation-for="Confirm"></span>
-                <p><label for="confirm">Confirm: </label>
-                <input asp-for="Confirm" id="confirm" type="password"></p>
-                <input class="button btn" type="submit" value="Register">
-            </form>
-        </div>
+<div class="wrapper">
+    <div class="container theWall">
+        <h1>The Wall</h1>
     </div>
-    <partial name="LoginPartial" view-data="ViewData"/>
+    <div class="body">
+        <div class="left">
+            <div class="form">
+                <h2>Register</h2>
+                <form asp-action="register" asp-controller="Home" method="POST">
+                    <span asp-validation-for="FirstName"></span>
+                    <p><label for="fname">First Name: </label>
+                    <input asp-for="FirstName" id="fname" type="text"></p>
+                    <span asp-validation-for="LastName"></span>
+                    <p><label for="lname">Last Name: </label>
+                    <input asp-for="LastName" id="lname" type="text"></p>
+                    <span asp-validation-for="Email"></span>
+                    <p><label for="email">Email: </label>
+                    <input asp-for="Email" id="email" type="text"></p>
+                    <span asp-validation-for="Password"></span>
+                    <p><label for="pword">Password: </label>
+                    <input asp-for="Password" id="pword" type="password"></p>
+                    <span asp-validation-for="Confirm"></span>
+                    <p><label for="confirm">Confirm: </label>
+                    <input asp-for="Confirm" id="confirm" type="password"></p>
+                    <input class="button btn" type="submit" value="Register">
+                </form>
+            </div>
+        </div>
+        <partial name="LoginPartial" view-data="ViewData"/>
+    </div>
 </div>

@@ -1,0 +1,13 @@
+@model List<User>
+
+<!-- This code is for an individual user viewing their connections, and eventually sending/recieving messages to/from them -->
+<div>
+    <partial name="headerPartial" view-data="ViewData"/>
+    <h2>Your Connections</h2> 
+    @{
+        foreach(User user in ViewBag.allConn)
+        {
+            <h4><a href="">@user.FirstName @user.LastName</a></h4><br>
+        }
+    }
+</div>

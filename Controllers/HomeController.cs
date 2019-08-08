@@ -174,15 +174,14 @@ namespace theWall.Controllers
         [HttpGet("/account/{userID:int}")]
         public IActionResult Account(int userID)
         {
-            var num = 5;
             if(HttpContext.Session.GetInt32("loggeduser") == userID)
             {
                 bool edit = false;
-                // int num = 10;   
-                System.Console.WriteLine("num: ", num);
+                int num = 10;   
+                System.Console.WriteLine("num: " + num);
                 ViewBag.edit = edit;
-                System.Console.WriteLine("edit: ", edit);
-                System.Console.WriteLine("!!!!: ", ViewBag.edit);
+                System.Console.WriteLine("edit: " + edit);
+                System.Console.WriteLine("!!!!: " + ViewBag.edit);
                 User user = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
                 ViewBag.CurrentUser = user;
 
@@ -195,6 +194,25 @@ namespace theWall.Controllers
                     .ToList();
                 ViewBag.allMessages = allMessages;
                 return View("accountPage");
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+        // [HttpGet("/account/edit/{  }")]
+
+        [HttpGet("connections/{userID:int}")]
+        public IActionResult Connections(int userID)
+        {
+            if(HttpContext.Session.GetInt32("loggeduser") == userID)
+            {
+                User user = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
+                ViewBag.CurrentUser = user;
+                
+                List<User> allConnections = dbContext.Users.ToList(); //needs to change from all users to all user connections
+                ViewBag.allConn = allConnections;
+                return View("Connections");
             }
             else
             {
