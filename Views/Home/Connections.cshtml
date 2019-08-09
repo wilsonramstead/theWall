@@ -1,13 +1,40 @@
 @model List<User>
 
 <!-- This code is for an individual user viewing their connections, and eventually sending/recieving messages to/from them -->
-<div>
+<div class="wrapper">
     <partial name="headerPartial" view-data="ViewData"/>
-    <h2>Your Connections</h2> 
-    @{
-        foreach(User user in ViewBag.allConn)
-        {
-            <h4><a href="">@user.FirstName @user.LastName</a></h4><br>
+    <div class="connectBox">
+        <h2>Your Connections</h2> 
+        @{
+            if(ViewBag.CurrentUser.MyConnections != null)
+            {
+                foreach(User user in ViewBag.CurrentUser.MyConnections)
+                {
+                    <h4><a href="">@user.FirstName @user.LastName</a></h4>
+                }
+            }
+            else
+            {
+                <h4>Add some connections!</h4>
+            }
         }
-    }
+    </div>
+
+    <div class="connectBox">
+        <h2>People You Are Not Connected To</h2>
+        @{
+            if(ViewBag.notConn != null)
+            {
+                foreach(User person in ViewBag.notConn)
+                {
+                    <h4><a href="">@person.FirstName @person.LastName</a></h4>
+                    <button>Add Connection</button><br>
+                }
+            }
+            else
+            {
+                <h4>You have added everyone!</h4>
+            }
+        }
+    </div>
 </div>

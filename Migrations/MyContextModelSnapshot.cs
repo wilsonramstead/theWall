@@ -100,7 +100,11 @@ namespace theWall.Migrations
 
                     b.Property<DateTime>("UpdatedAt");
 
+                    b.Property<int?>("UserID1");
+
                     b.HasKey("UserID");
+
+                    b.HasIndex("UserID1");
 
                     b.ToTable("Users");
                 });
@@ -146,6 +150,13 @@ namespace theWall.Migrations
                     b.HasOne("theWall.Models.Group", "thisGroup")
                         .WithMany("GroupMessages")
                         .HasForeignKey("thisGroupGroupID");
+                });
+
+            modelBuilder.Entity("theWall.Models.User", b =>
+                {
+                    b.HasOne("theWall.Models.User")
+                        .WithMany("MyConnections")
+                        .HasForeignKey("UserID1");
                 });
 
             modelBuilder.Entity("theWall.Models.UserGroup", b =>

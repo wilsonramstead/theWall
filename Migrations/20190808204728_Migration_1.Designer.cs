@@ -9,8 +9,8 @@ using theWall.Models;
 namespace theWall.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20190807235837_initial")]
-    partial class initial
+    [Migration("20190808204728_Migration_1")]
+    partial class Migration_1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -102,7 +102,11 @@ namespace theWall.Migrations
 
                     b.Property<DateTime>("UpdatedAt");
 
+                    b.Property<int?>("UserID1");
+
                     b.HasKey("UserID");
+
+                    b.HasIndex("UserID1");
 
                     b.ToTable("Users");
                 });
@@ -148,6 +152,13 @@ namespace theWall.Migrations
                     b.HasOne("theWall.Models.Group", "thisGroup")
                         .WithMany("GroupMessages")
                         .HasForeignKey("thisGroupGroupID");
+                });
+
+            modelBuilder.Entity("theWall.Models.User", b =>
+                {
+                    b.HasOne("theWall.Models.User")
+                        .WithMany("MyConnections")
+                        .HasForeignKey("UserID1");
                 });
 
             modelBuilder.Entity("theWall.Models.UserGroup", b =>
