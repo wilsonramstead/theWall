@@ -60,7 +60,7 @@ using theWall.Models;
     ");
             EndContext();
             BeginContext(273, 52, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "669cce554b2847ebaba4a5df22650a87", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "427f4db83e594aee898e9026d3e04bea", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();
@@ -186,7 +186,7 @@ WriteAttributeValue("", 1100, ViewBag.CurrentUser.UserID, 1100, 27, false);
             WriteLiteral("            </div>\n        </div>\n\n        <!-- <h3 class=\"activity\">Activity</h3> -->\n        <hr>\n        ");
             EndContext();
             BeginContext(1488, 54, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "3a85d31e321a4a6bb98cd273b62bcdaa", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "37ac33b720554d2d8bc7d4b5a10b5876", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();

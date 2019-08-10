@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace theWall.Migrations
 {
-    public partial class firstmigration : Migration
+    public partial class newMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -34,11 +34,18 @@ namespace theWall.Migrations
                     Password = table.Column<string>(nullable: false),
                     Bio = table.Column<string>(nullable: true),
                     CreatedAt = table.Column<DateTime>(nullable: false),
-                    UpdatedAt = table.Column<DateTime>(nullable: false)
+                    UpdatedAt = table.Column<DateTime>(nullable: false),
+                    UserID1 = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.UserID);
+                    table.ForeignKey(
+                        name: "FK_Users_Users_UserID1",
+                        column: x => x.UserID1,
+                        principalTable: "Users",
+                        principalColumn: "UserID",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -154,6 +161,11 @@ namespace theWall.Migrations
                 name: "IX_UserGroups_UserID",
                 table: "UserGroups",
                 column: "UserID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_UserID1",
+                table: "Users",
+                column: "UserID1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

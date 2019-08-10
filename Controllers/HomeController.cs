@@ -243,9 +243,29 @@ namespace theWall.Controllers
             {
                 User user = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
                 ViewBag.CurrentUser = user;
-                
-                List<User> allConnections = dbContext.Users.ToList(); //needs to change from all users to all user connections
-                ViewBag.allConn = allConnections;
+
+                List<User> allUsers = dbContext.Users.ToList(); //needs to change from all users to all user connections
+                List<User> NotConnected = new List<User>();
+                foreach(User person in allUsers)
+                {
+                    if(user.UserID == person.UserID)
+                    {
+                        continue;
+                    }
+                    else if(user.MyConnections == null)
+                    {
+                        NotConnected.Add(person);
+                    }
+                    else
+                    {
+                        if(!user.MyConnections.Contains(person))
+                        {
+                            NotConnected.Add(person);
+                        }
+                    }
+                    
+                }
+                ViewBag.notConn = NotConnected;
                 return View("Connections");
             }
             else

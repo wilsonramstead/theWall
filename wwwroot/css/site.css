@@ -243,12 +243,12 @@ button a {
     margin-bottom: 20px;
 }
 .activity {
-    /* width: 79.2vw;
+    width: 79.2vw;
     height: 50px;
     background-color: #4f7eff;
     padding: 11px;
     color: black;
-    margin-left: -23px; */
+    margin-left: -23px;
 }
 hr {
     height: 1px;
