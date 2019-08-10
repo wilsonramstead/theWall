@@ -91,6 +91,7 @@ body {
     vertical-align: bottom;
 }
 
+
 .headright a, h4{
     display: inline-block;
 }
@@ -197,26 +198,49 @@ button a {
 
 /* ACCOUNT PAGE */
 /* ************************************************************** */
+.accountHeader {
+    min-height: 320px;
+    width: 98%;
+    /* background-color: pink; */
+    background: #4f7eff;
+    background: 
+    /* dce5ff */
+        radial-gradient(
+            at center, #dce5ff, #4f7eff
+        );
+    border-radius: 10px;
+}
 .pic {
     height: 250px;
     width: 250px;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
     display: inline-block;
     background-color: orange;
 }
 .userInfo {
-    height: 250px;
-    width: 77%;
+    min-height: 250px;
+    width: 71%;
     display: inline-block;
     vertical-align: top;
     /* background-color: green; */
     padding: 10px;
 }
 .userInfo .editBtn {
-    display: block;
-    margin-left: 90%;
+    display: inline-block;
+    margin-left: 58%;
+    color: white;
+    font-size: 18px;
 }
 .userInfo h2 {
     margin-top: 0px;
+    color: white;
+}
+.userInfo p {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 20px;
 }
 .activity {
     /* width: 79.2vw;
@@ -233,4 +257,22 @@ hr {
 .button {
     background-color: #4f7eff;
     color: white;
+}
+
+.userInfo h1 {
+    display: inline-block;
+    margin: 0px auto;
+    font-weight: 600;
+}
+
+.userNameEdit {
+    height: 75px;
+    width: 100%;
+    /* background-color: green; */
+    padding: 20px;
+    color: white;
+}
+
+.atSign {
+    font-size: 24px;
 }

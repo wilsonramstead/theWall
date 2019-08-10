@@ -36,6 +36,11 @@ namespace theWall.Controllers
                     ModelState.AddModelError("Email", "That Email already exists!");
                     return View("Index");
                 }
+                else if (dbContext.Users.Any(u => u.UserName == user.UserName))
+                {
+                    ModelState.AddModelError("UserName", "That user name already exists!");
+                    return View("Index");
+                }
                 else
                 {
                     PasswordHasher<User> Hasher = new PasswordHasher<User>();
@@ -87,7 +92,7 @@ namespace theWall.Controllers
         [HttpGet("Dashboard/{userID:int}")]
         public IActionResult Dashboard(int userID)
         {
-            if(HttpContext.Session.GetInt32("loggeduser") == userID)
+            if(HttpContext.Session.GetInt32("loggeduser") != null)
             {
                 User user = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
                 ViewBag.CurrentUser = user;
@@ -116,7 +121,6 @@ namespace theWall.Controllers
             {
                 dbContext.Messages.Add(message);
                 dbContext.SaveChanges();
-                
                 return RedirectToAction("Dashboard", new{userID = userID});
             }
             else
@@ -136,11 +140,8 @@ namespace theWall.Controllers
             int userID = id ?? default(int);
             if(ModelState.IsValid)
             {
-                System.Console.WriteLine("Hit");
-                System.Console.WriteLine("comment content: " + comment.comContent);
                 dbContext.Comments.Add(comment);
                 dbContext.SaveChanges();
-                System.Console.WriteLine("Worked");
                 return RedirectToAction("Dashboard", new{userID = userID});
             }
                 
@@ -174,33 +175,66 @@ namespace theWall.Controllers
         [HttpGet("/account/{userID:int}")]
         public IActionResult Account(int userID)
         {
+            User user = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
+            int? session = HttpContext.Session.GetInt32("loggeduser");
+            int sessionID = session ?? default(int);
+            ViewBag.sessionID = sessionID;
+            ViewBag.CurrentUser = user;
+            List<Message> allMessages = dbContext.Messages
+                .Where(m => m.Creator.UserID == userID)
+                .Include(m => m.Creator)
+                .Include(m => m.Comments)
+                .ThenInclude(c => c.User)
+                .OrderByDescending(m => m.CreatedAt)
+                .ToList();
+            ViewBag.allMessages = allMessages;
+            return View("accountPage");
+        }
+        [HttpGet("/account/edit/{userID:int}")]
+        public IActionResult Edit(int userID)
+        {
             if(HttpContext.Session.GetInt32("loggeduser") == userID)
             {
-                bool edit = false;
-                int num = 10;   
-                System.Console.WriteLine("num: " + num);
-                ViewBag.edit = edit;
-                System.Console.WriteLine("edit: " + edit);
-                System.Console.WriteLine("!!!!: " + ViewBag.edit);
                 User user = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
-                ViewBag.CurrentUser = user;
-
-                List<Message> allMessages = dbContext.Messages
-                    .Where(m => m.Creator.UserID == userID)
-                    .Include(m => m.Creator)
-                    .Include(m => m.Comments)
-                    .ThenInclude(c => c.User)
-                    .OrderByDescending(m => m.CreatedAt)
-                    .ToList();
-                ViewBag.allMessages = allMessages;
-                return View("accountPage");
+                ViewBag.CurrentUser = user;  
+                List<User> allConnections = dbContext.Users.ToList(); //needs to change from all users to all user connections
+                ViewBag.allConn = allConnections;
+                return View("editAccount", user);
             }
             else
             {
                 return RedirectToAction("Index");
             }
         }
-        // [HttpGet("/account/edit/{  }")]
+        [HttpPost("/editUser/{ID}")]
+        public IActionResult EditUser(int ID, User user) 
+        {
+            if(user.UserName != null && user.FirstName != null && user.LastName != null) {
+                if(dbContext.Users.Where(u => u.UserID != ID).Any(u => u.UserName == user.UserName))
+                {
+                    ModelState.AddModelError("UserName", "That user name already exists!");
+                    User currentUser = dbContext.Users.FirstOrDefault(u => u.UserID == ID);
+                    ViewBag.CurrentUser = currentUser;  
+                    List<User> allConnections = dbContext.Users.ToList(); //needs to change from all users to all user connections
+                    ViewBag.allConn = allConnections;
+                    return View("editAccount", currentUser);
+                } else {
+                    User currentUser = dbContext.Users.FirstOrDefault(u => u.UserID == ID);
+                    currentUser.UserName = user.UserName;
+                    currentUser.FirstName = user.FirstName;
+                    currentUser.LastName = user.LastName;
+                    currentUser.Bio = user.Bio;
+                    dbContext.SaveChanges();
+                    return RedirectToAction("Account", new {userID = ID});
+                }
+            } else {
+                User currentUser = dbContext.Users.FirstOrDefault(u => u.UserID == ID);
+                ViewBag.CurrentUser = currentUser;
+                return View("editAccount", currentUser);
+            }
+
+
+        }
 
         [HttpGet("connections/{userID:int}")]
         public IActionResult Connections(int userID)
@@ -219,25 +253,5 @@ namespace theWall.Controllers
                 return RedirectToAction("Index");
             }
         }
-
-        [HttpGet("connections/{userID:int}")]
-        public IActionResult Connections(int userID)
-        {
-            if(HttpContext.Session.GetInt32("loggeduser") == userID)
-            {
-                User user = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
-                ViewBag.CurrentUser = user;
-                
-                List<User> allConnections = dbContext.Users.ToList(); //needs to change from all users to all user connections
-                ViewBag.allConn = allConnections;
-                return View("Connections");
-            }
-            else
-            {
-                return RedirectToAction("Index");
-            }
-        }
-
-        // [HttpGet("/account/")]
     }
 }

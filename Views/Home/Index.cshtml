@@ -5,10 +5,14 @@
         <h1>The Wall</h1>
     </div>
     <div class="body">
+        <p>PSA: We do nothing with your data and it is safely stored! We encourage new users to test this website out and see what it's all about!</p>
         <div class="left">
             <div class="form">
                 <h2>Register</h2>
                 <form asp-action="register" asp-controller="Home" method="POST">
+                    <span asp-validation-for="UserName"></span>
+                    <p><label for="username">User Name - (no spaces!): </label>
+                    <input asp-for="UserName" id="username" type="text"></p>
                     <span asp-validation-for="FirstName"></span>
                     <p><label for="fname">First Name: </label>
                     <input asp-for="FirstName" id="fname" type="text"></p>

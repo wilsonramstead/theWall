@@ -1,27 +1,62 @@
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
 <div class="wrapper">
     <partial name="headerPartial" view-data="ViewData"/>
 
     <div class="body">
-        @{
-            if(ViewBag.edit == false) {
-                <div class="pic"></div>
-                <div class="userInfo">
-                    <a class="editBtn">Edit</a>
-                    <h4>Name: </h4>
-                    <h2>@ViewBag.CurrentUser.FirstName @ViewBag.CurrentUser.LastName</h2>
-                    <h4>Bio: </h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor possimus numquam eius accusamus voluptate hic eos molestiae illo, molestias sed quasi consectetur architecto harum vitae!</p>
-                    <button class="btn button"><a href="/connections/@ViewBag.CurrentUser.UserID">0 | Connections</a></button>
+        <div class="accountHeader">
+            <div class="pic"></div>
+            <div class="userInfo">
+                <div class="userNameEdit">
+                    <h1>@@@ViewBag.CurrentUser.UserName</h1>
+                    @{
+                        if(ViewBag.sessionID == ViewBag.CurrentUser.UserID) {
+                            <a class="editBtn" href="/account/edit/@ViewBag.CurrentUser.UserID">Edit</a>
+                        }
+                    }
                 </div>
-            } else {
-                <p>Nah blud</p>
-            }
-        }
+                <h4>Name: </h4>
+                <h2>@ViewBag.CurrentUser.FirstName @ViewBag.CurrentUser.LastName</h2>
+                <h4>Bio: </h4>
+                <p>@ViewBag.CurrentUser.Bio</p>
+                <button class="btn button"><a href="/connections/@ViewBag.CurrentUser.UserID">0 | Connections</a></button>
+                @{
+                    if(ViewBag.sessionID != ViewBag.CurrentUser.UserID) {
+                        <button class="btn btn-success"><a href="">Connect!</a></button>
+                    }
+                }
+            </div>
+        </div>
 
         <!-- <h3 class="activity">Activity</h3> -->
         <hr>
         <partial name="newsFeedPartial" view-data="ViewData"/>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        console.log("on ready");
+
+        $(".accountHeader").mousemove(function(event) {
+            console.log("hitting mousemove");
+
+            var accountHeaderWidth = $(".accountHeader").width();
+
+            var accountHeaderHeight = $(".accountHeader").height();
+
+            var mouseXpercentage = Math.round(event.pageX / accountHeaderWidth * 100);
+            console.log("posX: ", event.pageX);
+            var mouseYpercentage = Math.round(event.pageY / accountHeaderHeight * 100);
+            console.log("posY: ", event.pageY);
+            $(".accountHeader").css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #e2e2e2, #4f7eff)');
+            // $(".accountHeader").replaceWith("<p>Bitch</p>");
+        })
+    })
+</script>
+
+
+
+

@@ -13,7 +13,7 @@
                 foreach(Message m in ViewBag.allMessages)
                 {
                     var date = m.CreatedAt.ToString("MMMM dd yyyy");
-                    <h4>@m.Creator.FirstName @m.Creator.LastName - @date</h4>
+                    <h4><a href="/account/@m.Creator.UserID"><span class="atSign">@@</span>@m.Creator.UserName </a>  - @date</h4>
                     <p class="content">@m.Content</p>
                     
         
@@ -39,6 +39,7 @@
                             <input class="btn btn-success" type="submit" value="Post comment">
                         </form>
                     </div>   
+                    <hr>
                 }
             }
         }
