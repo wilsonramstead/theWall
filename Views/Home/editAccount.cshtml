@@ -10,9 +10,11 @@
             <h1>Edit</h1>
             <hr>
             <form asp-action="EditUser" asp-route-ID="@Model.UserID" asp-controller="Home" method="POST">
+
+                <input type="file" name="pic" accept="image/*">
                 <span asp-validation-for="UserName"></span>
                 <p><h4>User Name - (no spaces!): </h4>
-                @@<input asp-for="UserName" type="text"></p>
+                <span class="atSign">@@</span><input asp-for="UserName" type="text"></p>
                 <span asp-validation-for="FirstName"></span>
                 <p><h4>First Name: </h4>
                 <input asp-for="FirstName" type="text"></p>

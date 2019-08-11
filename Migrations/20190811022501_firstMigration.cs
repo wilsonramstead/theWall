@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace theWall.Migrations
 {
-    public partial class newMigration : Migration
+    public partial class firstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -33,6 +33,9 @@ namespace theWall.Migrations
                     UserName = table.Column<string>(nullable: false),
                     Password = table.Column<string>(nullable: false),
                     Bio = table.Column<string>(nullable: true),
+                    ColorRed = table.Column<int>(nullable: false),
+                    ColorGreen = table.Column<int>(nullable: false),
+                    ColorBlue = table.Column<int>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: false),
                     UserID1 = table.Column<int>(nullable: true)

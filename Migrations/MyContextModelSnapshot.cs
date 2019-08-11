@@ -86,6 +86,12 @@ namespace theWall.Migrations
 
                     b.Property<string>("Bio");
 
+                    b.Property<int>("ColorBlue");
+
+                    b.Property<int>("ColorGreen");
+
+                    b.Property<int>("ColorRed");
+
                     b.Property<DateTime>("CreatedAt");
 
                     b.Property<string>("Email")

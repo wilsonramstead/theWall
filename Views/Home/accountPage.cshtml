@@ -6,13 +6,14 @@
     <partial name="headerPartial" view-data="ViewData"/>
 
     <div class="body">
-        <div class="accountHeader">
+        <div class="accountHeader" >
             <div class="pic"></div>
             <div class="userInfo">
                 <div class="userNameEdit">
                     <h1>@@@ViewBag.CurrentUser.UserName</h1>
                     @{
                         if(ViewBag.sessionID == ViewBag.CurrentUser.UserID) {
+                            <a class="colorBtn" href="/account/color/@ViewBag.CurrentUser.UserID">Change Color</a>
                             <a class="editBtn" href="/account/edit/@ViewBag.CurrentUser.UserID">Edit</a>
                         }
                     }
@@ -37,8 +38,18 @@
 </div>
 
 <script>
+    var currentUser = '@(ViewBag.CurrentUser)';
+    var colorRed = '@(ViewBag.CurrentUser.ColorRed)';
+    var colorGreen = '@(ViewBag.CurrentUser.ColorGreen)';
+    var colorBlue = '@(ViewBag.CurrentUser.ColorBlue)';
+
+    console.log("currentUser: ", currentUser);
+    console.log("colorRed: ", colorRed);
+
     $(document).ready(function() {
         console.log("on ready");
+        $('.accountHeader').css('background', 'rgb(' + colorRed + ', ' + colorGreen + ', ' + colorBlue + ')');
+        $('.accountHeader').css('background', 'radial-gradient( at center, #dce5ff, rgb(' + colorRed + ', ' + colorGreen + ', ' + colorBlue + ')');
 
         $(".accountHeader").mousemove(function(event) {
             console.log("hitting mousemove");
@@ -51,8 +62,7 @@
             console.log("posX: ", event.pageX);
             var mouseYpercentage = Math.round(event.pageY / accountHeaderHeight * 100);
             console.log("posY: ", event.pageY);
-            $(".accountHeader").css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #e2e2e2, #4f7eff)');
-            // $(".accountHeader").replaceWith("<p>Bitch</p>");
+            $(".accountHeader").css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #e2e2e2, rgb(' + colorRed + ', ' + colorGreen + ', ' + colorBlue + '))');
         })
     })
 </script>

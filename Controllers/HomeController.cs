@@ -232,9 +232,40 @@ namespace theWall.Controllers
                 ViewBag.CurrentUser = currentUser;
                 return View("editAccount", currentUser);
             }
-
-
         }
+        [HttpGet("/account/color/{userID:int}")]
+        public IActionResult changeColor(int userID)
+        {
+            if(HttpContext.Session.GetInt32("loggeduser") == userID)
+            {
+                User user = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
+                ViewBag.CurrentUser = user;  
+                return View("changeColor", user);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+        [HttpPost("/updateColor/{userID:int}")]
+        public IActionResult updateColor(int userID, User user)
+        {
+            if(HttpContext.Session.GetInt32("loggeduser") == userID)
+            {
+                System.Console.WriteLine("YEE BUDDYY!");
+                User currentUser = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
+                // ViewBag.CurrentUser = currentUser;
+                currentUser.ColorRed = user.ColorRed;
+                currentUser.ColorGreen = user.ColorGreen;
+                currentUser.ColorBlue = user.ColorBlue;
+                dbContext.SaveChanges();
+                // return View("changeColor", user);
+                return RedirectToAction("Account", new {userID = userID});
+            } else {
+                return RedirectToAction("Index");
+            }
+        }
+
 
         [HttpGet("connections/{userID:int}")]
         public IActionResult Connections(int userID)

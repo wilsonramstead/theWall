@@ -9,8 +9,8 @@ using theWall.Models;
 namespace theWall.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20190810003201_newMigration")]
-    partial class newMigration
+    [Migration("20190811022501_firstMigration")]
+    partial class firstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -87,6 +87,12 @@ namespace theWall.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Bio");
+
+                    b.Property<int>("ColorBlue");
+
+                    b.Property<int>("ColorGreen");
+
+                    b.Property<int>("ColorRed");
 
                     b.Property<DateTime>("CreatedAt");
 

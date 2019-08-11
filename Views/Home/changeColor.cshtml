@@ -1,0 +1,47 @@
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+@model User
+
+<partial name="headerPartial" view-data="ViewData"/>
+
+<div class="wrapper">
+    <div class="body">
+        <h1 class="center">Header Color</h1>
+        <form asp-action="updateColor" asp-route-ID="@Model.UserID" asp-controller="Home" method="POST">
+            <div class="picker">
+                Red <input asp-for="ColorRed" type="range" min="0" max="255" step="1" id="red">
+                Green <input asp-for="ColorGreen" type="range" min="0" max="255" step="1" id="green">
+                Blue <input asp-for="ColorBlue" type="range" min="0" max="255" step="1" id="blue">
+                <div id="display"></div>
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+
+        var colorRed = '@(ViewBag.CurrentUser.ColorRed)';
+        var colorGreen = '@(ViewBag.CurrentUser.ColorGreen)';
+        var colorBlue = '@(ViewBag.CurrentUser.ColorBlue)';
+
+        $('#display').css('background', 'rgb(' + colorRed + ', ' + colorGreen + ', ' + colorBlue + ')');
+        $('#display').css('background', 'radial-gradient( at center, #dce5ff, rgb(' + colorRed + ', ' + colorGreen + ', ' + colorBlue + ')');
+
+        var input = document.querySelectorAll("input");
+
+        for(var i = 0; i < input.length; i++) {
+            input[i].addEventListener("input", function() {
+                var red = document.getElementById("red").value,
+                    green = document.getElementById("green").value,
+                    blue = document.getElementById("blue").value
+
+                var display = document.getElementById("display");
+                display.style.background = "radial-gradient( at center, #dce5ff, rgb(" + red + ", " + green + ", " + blue + ")"; 
+            })
+        }
+
+    })
+</script>

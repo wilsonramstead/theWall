@@ -68,3 +68,4 @@ C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.
 C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.csproj.CopyComplete
 /Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/Connections.g.cshtml.cs
 /Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/editAccount.g.cshtml.cs
+/Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/changeColor.g.cshtml.cs
