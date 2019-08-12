@@ -68,3 +68,4 @@ C:\Users\ryan\Desktop\CodingDojo\PersonalProjects\theWall\obj\Debug\netcoreapp2.
 C:\Users\ryan\Desktop\CodingDojo\PersonalProjects\theWall\obj\Debug\netcoreapp2.1\theWall.RazorTargetAssemblyInfo.cs
 C:\Users\ryan\Desktop\CodingDojo\PersonalProjects\theWall\obj\Debug\netcoreapp2.1\theWall.Views.pdb
 C:\Users\ryan\Desktop\CodingDojo\PersonalProjects\theWall\obj\Debug\netcoreapp2.1\theWall.csproj.CopyComplete
+C:\Users\ryan\Desktop\CodingDojo\PersonalProjects\theWall\obj\Debug\netcoreapp2.1\Razor\Views\Home\DMs.g.cshtml.cs

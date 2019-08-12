@@ -409,6 +409,34 @@ namespace theWall.Controllers
             }
         }
 
+        [HttpGet("directMessaging/{userID:int}")]
+        public IActionResult DirectMessaging(int userID)
+        {
+            if(HttpContext.Session.GetInt32("loggeduser") == userID)
+            {
+                User user = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
+                ViewBag.CurrentUser = user;
+
+                List<Connection> UserConn = dbContext.Connections.Where(cid => cid.UserID == user.UserID).ToList();
+                List<User> allConnections = new List<User>();
+                foreach(Connection con in UserConn)//puts all user connections into a list
+                {
+                    if(con.isConnected)
+                    {
+                        User u = dbContext.Users.FirstOrDefault(fid => fid.UserID == con.FriendID);
+                        allConnections.Add(u);
+                    }
+                }
+                ViewBag.allConn = allConnections;
+
+                return View("DMs");
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
         // [HttpGet("/account/")]
     }
 }
