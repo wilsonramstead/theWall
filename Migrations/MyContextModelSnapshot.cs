@@ -100,6 +100,14 @@ namespace theWall.Migrations
                     b.Property<int>("UserID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Bio");
+
+                    b.Property<int>("ColorBlue");
+
+                    b.Property<int>("ColorGreen");
+
+                    b.Property<int>("ColorRed");
+
                     b.Property<DateTime>("CreatedAt");
 
                     b.Property<string>("Email")
@@ -115,6 +123,9 @@ namespace theWall.Migrations
                         .IsRequired();
 
                     b.Property<DateTime>("UpdatedAt");
+
+                    b.Property<string>("UserName")
+                        .IsRequired();
 
                     b.HasKey("UserID");
 

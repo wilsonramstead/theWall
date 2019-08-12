@@ -30,7 +30,12 @@ namespace theWall.Migrations
                     FirstName = table.Column<string>(nullable: false),
                     LastName = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: false),
+                    UserName = table.Column<string>(nullable: false),
                     Password = table.Column<string>(nullable: false),
+                    Bio = table.Column<string>(nullable: true),
+                    ColorRed = table.Column<int>(nullable: false),
+                    ColorGreen = table.Column<int>(nullable: false),
+                    ColorBlue = table.Column<int>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: false)
                 },
@@ -52,8 +57,8 @@ namespace theWall.Migrations
                 {
                     table.PrimaryKey("PK_Connections", x => x.ConnectionID);
                     table.ForeignKey(
-                        name: "FK_Connections_Users_FriendID",
-                        column: x => x.FriendID,
+                        name: "FK_Connections_Users_UserID",
+                        column: x => x.UserID,
                         principalTable: "Users",
                         principalColumn: "UserID",
                         onDelete: ReferentialAction.Cascade);
@@ -154,9 +159,9 @@ namespace theWall.Migrations
                 column: "UserID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Connections_FriendID",
+                name: "IX_Connections_UserID",
                 table: "Connections",
-                column: "FriendID");
+                column: "UserID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Messages_UserID",

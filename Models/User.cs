@@ -21,12 +21,23 @@ namespace theWall.Models
         public string Email {get;set;}
 
         [Required]
+        public string UserName {get;set;}
+
+        [Required]
         public string Password {get;set;}
         
         [Required]
         [NotMapped]
         [Compare("Password")]
         public string Confirm {get;set;}
+
+        public string Bio {get;set;}
+        
+        public int ColorRed {get;set;}
+
+        public int ColorGreen {get;set;}
+
+        public int ColorBlue {get;set;}
 
         public DateTime CreatedAt {get;set;} = DateTime.Now;
         public DateTime UpdatedAt {get;set;} = DateTime.Now;

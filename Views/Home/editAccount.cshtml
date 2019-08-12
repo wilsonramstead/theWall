@@ -1,0 +1,33 @@
+
+@model User
+
+<div class="wrapper">
+    <partial name="headerPartial" view-data="ViewData"/>
+    <!-- <p>@ViewBag.CurrentUser.UserID</p> -->
+    <!-- <p>@Model.UserID</p> -->
+    <div class="body">
+        <div class="userInfo">
+            <h1>Edit</h1>
+            <hr>
+            <form asp-action="EditUser" asp-route-ID="@Model.UserID" asp-controller="Home" method="POST">
+
+                <input type="file" name="pic" accept="image/*">
+                <span asp-validation-for="UserName"></span>
+                <p><h4>User Name - (no spaces!): </h4>
+                <span class="atSign">@@</span><input asp-for="UserName" type="text"></p>
+                <span asp-validation-for="FirstName"></span>
+                <p><h4>First Name: </h4>
+                <input asp-for="FirstName" type="text"></p>
+                <span asp-validation-for="LastName"></span>
+                <p><h4>Last Name: </h4>
+                <input asp-for="LastName" type="text"></p>
+                <!-- <input asp-for="Bio" id="bio" type="textarea"></p> -->
+                <p><h4>Bio: </h4>
+                <textarea asp-for="Bio" cols="60" rows="5"></textarea></p>
+                <input class="btn button" type="submit" value="Update">
+            </form>
+            <hr>
+            <button class="btn btn-success"><a href="/account/@Model.UserID">Go Back</a></button>
+        </div>
+    </div>
+</div>

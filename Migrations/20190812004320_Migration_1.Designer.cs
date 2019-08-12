@@ -9,7 +9,7 @@ using theWall.Models;
 namespace theWall.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20190811222204_Migration_1")]
+    [Migration("20190812004320_Migration_1")]
     partial class Migration_1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,7 +30,7 @@ namespace theWall.Migrations
 
                     b.HasKey("ConnectionID");
 
-                    b.HasIndex("FriendID");
+                    b.HasIndex("UserID");
 
                     b.ToTable("Connections");
                 });
@@ -102,6 +102,14 @@ namespace theWall.Migrations
                     b.Property<int>("UserID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Bio");
+
+                    b.Property<int>("ColorBlue");
+
+                    b.Property<int>("ColorGreen");
+
+                    b.Property<int>("ColorRed");
+
                     b.Property<DateTime>("CreatedAt");
 
                     b.Property<string>("Email")
@@ -117,6 +125,9 @@ namespace theWall.Migrations
                         .IsRequired();
 
                     b.Property<DateTime>("UpdatedAt");
+
+                    b.Property<string>("UserName")
+                        .IsRequired();
 
                     b.HasKey("UserID");
 
@@ -143,9 +154,9 @@ namespace theWall.Migrations
 
             modelBuilder.Entity("Connection", b =>
                 {
-                    b.HasOne("theWall.Models.User", "Friend")
+                    b.HasOne("theWall.Models.User")
                         .WithMany("MyConnections")
-                        .HasForeignKey("FriendID")
+                        .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
