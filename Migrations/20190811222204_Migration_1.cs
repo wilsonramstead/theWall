@@ -32,18 +32,31 @@ namespace theWall.Migrations
                     Email = table.Column<string>(nullable: false),
                     Password = table.Column<string>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: false),
-                    UpdatedAt = table.Column<DateTime>(nullable: false),
-                    UserID1 = table.Column<int>(nullable: true)
+                    UpdatedAt = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.UserID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Connections",
+                columns: table => new
+                {
+                    ConnectionID = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UserID = table.Column<int>(nullable: false),
+                    FriendID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Connections", x => x.ConnectionID);
                     table.ForeignKey(
-                        name: "FK_Users_Users_UserID1",
-                        column: x => x.UserID1,
+                        name: "FK_Connections_Users_FriendID",
+                        column: x => x.FriendID,
                         principalTable: "Users",
                         principalColumn: "UserID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -141,6 +154,11 @@ namespace theWall.Migrations
                 column: "UserID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Connections_FriendID",
+                table: "Connections",
+                column: "FriendID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Messages_UserID",
                 table: "Messages",
                 column: "UserID");
@@ -159,17 +177,15 @@ namespace theWall.Migrations
                 name: "IX_UserGroups_UserID",
                 table: "UserGroups",
                 column: "UserID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_UserID1",
-                table: "Users",
-                column: "UserID1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Comments");
+
+            migrationBuilder.DropTable(
+                name: "Connections");
 
             migrationBuilder.DropTable(
                 name: "UserGroups");
