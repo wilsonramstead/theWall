@@ -9,7 +9,7 @@ using theWall.Models;
 namespace theWall.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20190812004320_Migration_1")]
+    [Migration("20190812182153_Migration_1")]
     partial class Migration_1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,6 +27,10 @@ namespace theWall.Migrations
                     b.Property<int>("FriendID");
 
                     b.Property<int>("UserID");
+
+                    b.Property<int>("creatorID");
+
+                    b.Property<bool>("isConnected");
 
                     b.HasKey("ConnectionID");
 

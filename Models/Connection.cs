@@ -8,13 +8,18 @@ public class Connection
 {
     [Key]
     public int ConnectionID {get;set;}
+    public int creatorID {get;set;}
     public int UserID {get;set;}
 
     public int FriendID {get;set;}
 
-    public Connection(int UserID, int FriendID)
+    public bool isConnected {get;set;}
+
+    public Connection(int creatorID, int UserID, int FriendID)
     {
+        this.creatorID = creatorID;
         this.UserID = UserID;
         this.FriendID = FriendID;
+        this.isConnected = false;
     }
 }

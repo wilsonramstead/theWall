@@ -1,12 +1,12 @@
 @model List<User>
 
 <!-- This code is for an individual user viewing their connections, and eventually viewing their profiles -->
-<div class="wrapper">
+<div class="body">
     <partial name="headerPartial" view-data="ViewData"/>
     <div class="connectBox">
         <h2>Your Connections</h2> 
         @{
-            if(ViewBag.allConn != null)
+            if(ViewBag.allConn.Count > 0)
             {
                 foreach(User user in ViewBag.allConn)
                 {
@@ -27,8 +27,21 @@
             {
                 foreach(User person in ViewBag.notConn)
                 {
-                    <h4><a href="">@person.FirstName @person.LastName</a></h4>
-                    <button><a href="/addConnection/@ViewBag.CurrentUser.UserID/@person.UserID">Add Connection</a></button><br>
+                    if(ViewBag.pending.Contains(person))
+                    {
+                        <h4><a href="">@person.FirstName @person.LastName </a> Request Pending</h4><br>
+                    }
+                    else if(ViewBag.accept.Contains(person))
+                    {
+                        <h4><a href="">@person.FirstName @person.LastName</a></h4>
+                        <button><a href="/acceptConnection/@ViewBag.CurrentUser.UserID/@person.UserID">Accept Request</a></button>
+                        <button><a href="/declineConnection/@ViewBag.CurrentUser.UserID/@person.UserID">Decline Request</a></button><br>
+                    }
+                    else
+                    {
+                        <h4><a href="">@person.FirstName @person.LastName</a></h4>
+                        <button><a href="/addConnection/@ViewBag.CurrentUser.UserID/@person.UserID">Add Connection</a></button><br>
+                    }
                 }
             }
             else

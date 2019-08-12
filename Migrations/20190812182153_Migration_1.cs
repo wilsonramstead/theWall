@@ -50,8 +50,10 @@ namespace theWall.Migrations
                 {
                     ConnectionID = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    creatorID = table.Column<int>(nullable: false),
                     UserID = table.Column<int>(nullable: false),
-                    FriendID = table.Column<int>(nullable: false)
+                    FriendID = table.Column<int>(nullable: false),
+                    isConnected = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

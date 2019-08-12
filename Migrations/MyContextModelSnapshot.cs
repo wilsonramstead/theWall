@@ -26,6 +26,10 @@ namespace theWall.Migrations
 
                     b.Property<int>("UserID");
 
+                    b.Property<int>("creatorID");
+
+                    b.Property<bool>("isConnected");
+
                     b.HasKey("ConnectionID");
 
                     b.HasIndex("UserID");
