@@ -54,7 +54,7 @@ using theWall.Models;
             WriteLiteral("\n<!-- This code is for an individual user viewing their connections, and eventually sending/recieving messages to/from them -->\n<div class=\"wrapper\">\n    ");
             EndContext();
             BeginContext(172, 52, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "9081b9a3b2ef4a75bd475ba0c8b0422e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a8879e1039b54450bc3ad5922d305929", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();

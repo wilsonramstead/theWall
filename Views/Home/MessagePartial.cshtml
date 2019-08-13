@@ -2,10 +2,10 @@
 @model Message
 
 <div class="bodyPost">
-    <div class="form">
+    <div class="messageForm form">
         <form asp-action="CreateMessage" asp-controller="Home" method="POST">
             <span asp-validation-for="Content"></span>
-            <h4><label for="message">Post a message</label</h4>
+            <h4><label for="message">Post a message</label></h4>
             <p><textarea asp-for="Content" id="message" rows="6" cols = "100"></textarea></p>
             <input asp-for="UserID" value="@ViewBag.CurrentUser.UserID" type="hidden">
             <input class="btn button" type="Submit" value="Post message">

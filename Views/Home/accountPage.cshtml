@@ -7,14 +7,16 @@
 
     <div class="body">
         <div class="accountHeader" >
-            <div class="pic"></div>
+            <img class="pic" src="~/images/defaultpic.jpg" alt="Users account profile picture">
             <div class="userInfo">
                 <div class="userNameEdit">
                     <h1>@@@ViewBag.CurrentUser.UserName</h1>
                     @{
                         if(ViewBag.sessionID == ViewBag.CurrentUser.UserID) {
+                        <div class="editLinks">
                             <a class="colorBtn" href="/account/color/@ViewBag.CurrentUser.UserID">Change Color</a>
                             <a class="editBtn" href="/account/edit/@ViewBag.CurrentUser.UserID">Edit</a>
+                        </div>
                         }
                     }
                 </div>

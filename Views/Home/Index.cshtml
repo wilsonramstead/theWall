@@ -1,4 +1,7 @@
-﻿@model User
+﻿
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+@model User
 
 <div class="wrapper">
     <div class="container theWall">
@@ -6,12 +9,17 @@
     </div>
     <div class="body">
         <p>PSA: We do nothing with your data and it is safely stored! We encourage new users to test this website out and see what it's all about!</p>
+        <div class="formLinks">
+            <a id="register">Register</a>
+            <span>|</span>
+            <a id="login">Login</a>
+        </div>
         <div class="left">
             <div class="form">
                 <h2>Register</h2>
                 <form asp-action="register" asp-controller="Home" method="POST">
                     <span asp-validation-for="UserName"></span>
-                    <p><label for="username">User Name - (no spaces!): </label>
+                    <p><label for="username">User Name: </label>
                     <input asp-for="UserName" id="username" type="text"></p>
                     <span asp-validation-for="FirstName"></span>
                     <p><label for="fname">First Name: </label>
@@ -31,10 +39,37 @@
                     <input asp-for="ColorRed" value="79" type="hidden">
                     <input asp-for="ColorGreen" value="126" type="hidden">
                     <input asp-for="ColorBlue" value="255" type="hidden">
-                    <input class="button btn" type="submit" value="Register">
+                    <p><input class="button btn" type="submit" value="Register"></p>
                 </form>
             </div>
         </div>
         <partial name="LoginPartial" view-data="ViewData"/>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        var pageWidth = $(window).width();
+        console.log("pageWidth", pageWidth);
+        if(pageWidth <= 480) {
+            $(".left").css("display", "none");
+            $(".right").css("display", "none");
+
+            $(".form label").css("display", "block");
+            $(".form input").css("display", "block");
+            
+            $("#register").click(function() {
+                console.log("working");
+                $(".formLinks").css("display", "none");
+                $(".left").css("display", "");
+            })
+            $("#login").click(function() {
+                $(".formLinks").css("display", "none");
+                $(".right").css("display", "");
+            })
+        } else {
+            $(".form label").css("display", "inline-block");
+            $(".form input").css("display", "inline-block");
+        }
+    })
+</script>
