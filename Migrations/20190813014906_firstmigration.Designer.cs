@@ -9,8 +9,8 @@ using theWall.Models;
 namespace theWall.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20190811022501_firstMigration")]
-    partial class firstMigration
+    [Migration("20190813014906_firstmigration")]
+    partial class firstmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -18,6 +18,26 @@ namespace theWall.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("Connection", b =>
+                {
+                    b.Property<int>("ConnectionID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("FriendID");
+
+                    b.Property<int>("UserID");
+
+                    b.Property<int>("creatorID");
+
+                    b.Property<bool>("isConnected");
+
+                    b.HasKey("ConnectionID");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("Connections");
+                });
 
             modelBuilder.Entity("theWall.Models.Comment", b =>
                 {
@@ -110,14 +130,10 @@ namespace theWall.Migrations
 
                     b.Property<DateTime>("UpdatedAt");
 
-                    b.Property<int?>("UserID1");
-
                     b.Property<string>("UserName")
                         .IsRequired();
 
                     b.HasKey("UserID");
-
-                    b.HasIndex("UserID1");
 
                     b.ToTable("Users");
                 });
@@ -138,6 +154,14 @@ namespace theWall.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("UserGroups");
+                });
+
+            modelBuilder.Entity("Connection", b =>
+                {
+                    b.HasOne("theWall.Models.User")
+                        .WithMany("MyConnections")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("theWall.Models.Comment", b =>
@@ -163,13 +187,6 @@ namespace theWall.Migrations
                     b.HasOne("theWall.Models.Group", "thisGroup")
                         .WithMany("GroupMessages")
                         .HasForeignKey("thisGroupGroupID");
-                });
-
-            modelBuilder.Entity("theWall.Models.User", b =>
-                {
-                    b.HasOne("theWall.Models.User")
-                        .WithMany("MyConnections")
-                        .HasForeignKey("UserID1");
                 });
 
             modelBuilder.Entity("theWall.Models.UserGroup", b =>

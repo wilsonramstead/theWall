@@ -27,12 +27,20 @@
 /Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/theWall.csproj.CopyComplete
 /Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/Dashboard.g.cshtml.cs
 /Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/MessagePartial.g.cshtml.cs
-<<<<<<< HEAD
 /Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/newsFeedPartial.g.cshtml.cs
-=======
->>>>>>> e117c133bba11620df07ab23aad04e0251fafa7c
 /Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/accountPage.g.cshtml.cs
 /Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/headerPartial.g.cshtml.cs
+/Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/Connections.g.cshtml.cs
+/Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/editAccount.g.cshtml.cs
+/Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/changeColor.g.cshtml.cs
+C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.csprojAssemblyReference.cache
+C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.csproj.CoreCompileInputs.cache
+C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.RazorAssemblyInfo.cache
+C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.RazorAssemblyInfo.cs
+C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.AssemblyInfoInputs.cache
+C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.AssemblyInfo.cs
+C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.dll
+C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.pdb
 C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/bin/Debug/netcoreapp2.1/theWall.deps.json
 C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/bin/Debug/netcoreapp2.1/theWall.runtimeconfig.json
 C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/bin/Debug/netcoreapp2.1/theWall.runtimeconfig.dev.json
@@ -40,18 +48,14 @@ C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/bin/Debug/netcoreapp2.
 C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/bin/Debug/netcoreapp2.1/theWall.pdb
 C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/bin/Debug/netcoreapp2.1/theWall.Views.dll
 C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/bin/Debug/netcoreapp2.1/theWall.Views.pdb
-C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.csprojAssemblyReference.cache
-C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.csproj.CoreCompileInputs.cache
-C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.RazorAssemblyInfo.cache
-C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.RazorAssemblyInfo.cs
-C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.AssemblyInfoInputs.cache
-C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.AssemblyInfo.cs
 C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.TagHelpers.input.cache
 C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.TagHelpers.output.cache
 C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.RazorCoreGenerate.cache
 C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/accountPage.g.cshtml.cs
+C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/changeColor.g.cshtml.cs
 C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/Connections.g.cshtml.cs
 C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/Dashboard.g.cshtml.cs
+C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/editAccount.g.cshtml.cs
 C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/headerPartial.g.cshtml.cs
 C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/Index.g.cshtml.cs
 C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/LoginPartial.g.cshtml.cs
@@ -63,9 +67,6 @@ C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.
 C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.RazorTargetAssemblyInfo.cache
 C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.RazorTargetAssemblyInfo.cs
 C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.Views.pdb
-C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.dll
-C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.pdb
 C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.csproj.CopyComplete
-/Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/Connections.g.cshtml.cs
-/Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/editAccount.g.cshtml.cs
-/Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/changeColor.g.cshtml.cs
+C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/DMs.g.cshtml.cs
+/Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/DMs.g.cshtml.cs

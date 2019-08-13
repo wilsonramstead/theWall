@@ -1,16 +1,16 @@
 @model List<User>
 
-<!-- This code is for an individual user viewing their connections, and eventually sending/recieving messages to/from them -->
-<div class="wrapper">
+<!-- This code is for an individual user viewing their connections, and eventually viewing their profiles -->
+<div class="body">
     <partial name="headerPartial" view-data="ViewData"/>
     <div class="connectBox">
         <h2>Your Connections</h2> 
         @{
-            if(ViewBag.CurrentUser.MyConnections != null)
+            if(ViewBag.allConn.Count > 0)
             {
-                foreach(User user in ViewBag.CurrentUser.MyConnections)
+                foreach(User user in ViewBag.allConn)
                 {
-                    <h4><a href="">@user.FirstName @user.LastName</a></h4>
+                    <h4><a href="">@user.FirstName @user.LastName</a></h4><br>
                 }
             }
             else
@@ -23,12 +23,25 @@
     <div class="connectBox">
         <h2>People You Are Not Connected To</h2>
         @{
-            if(ViewBag.notConn != null)
+            if(ViewBag.notConn.Count > 0)
             {
                 foreach(User person in ViewBag.notConn)
                 {
-                    <h4><a href="">@person.FirstName @person.LastName</a></h4>
-                    <button>Add Connection</button><br>
+                    if(ViewBag.pending.Contains(person))
+                    {
+                        <h4><a href="">@person.FirstName @person.LastName </a> Request Pending</h4><br>
+                    }
+                    else if(ViewBag.accept.Contains(person))
+                    {
+                        <h4><a href="">@person.FirstName @person.LastName</a></h4>
+                        <button><a href="/acceptConnection/@ViewBag.CurrentUser.UserID/@person.UserID">Accept Request</a></button>
+                        <button><a href="/declineConnection/@ViewBag.CurrentUser.UserID/@person.UserID">Decline Request</a></button><br>
+                    }
+                    else
+                    {
+                        <h4><a href="">@person.FirstName @person.LastName</a></h4>
+                        <button><a href="/addConnection/@ViewBag.CurrentUser.UserID/@person.UserID">Add Connection</a></button><br>
+                    }
                 }
             }
             else

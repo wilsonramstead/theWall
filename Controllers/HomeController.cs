@@ -275,24 +275,57 @@ namespace theWall.Controllers
                 User user = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
                 ViewBag.CurrentUser = user;
 
-                List<User> allUsers = dbContext.Users.ToList(); //needs to change from all users to all user connections
+                List<Connection> UserConn = dbContext.Connections.Where(cid => cid.UserID == user.UserID).ToList();
+                List<User> allConnections = new List<User>();
+                foreach(Connection con in UserConn)//puts all user connections into a list
+                {
+                    if(con.isConnected)
+                    {
+                        User u = dbContext.Users.FirstOrDefault(fid => fid.UserID == con.FriendID);
+                        allConnections.Add(u);
+                    }
+                }
+                ViewBag.allConn = allConnections;
+
+                List<Connection> pending = dbContext.Connections
+                .Where(cid => cid.UserID == user.UserID)
+                .Where(cic => cic.isConnected == false)
+                .Where(uid => uid.creatorID == user.UserID).ToList();
+                List<User> pendingUsers = new List<User>();
+                foreach(Connection con in pending)
+                {
+                    User u = dbContext.Users.FirstOrDefault(fid => fid.UserID == con.FriendID);
+                    pendingUsers.Add(u);
+                }
+                ViewBag.pending = pendingUsers;
+
+                List<Connection> accept = dbContext.Connections
+                .Where(cid => cid.UserID == userID)
+                .Where(cic => cic.isConnected == false)
+                .Where(uid => uid.creatorID != user.UserID).ToList();
+                List<User> acceptUsers = new List<User>();
+                foreach(Connection con in accept)
+                {
+                    User u = dbContext.Users.FirstOrDefault(fid => fid.UserID == con.FriendID);
+                    acceptUsers.Add(u);
+                }
+                ViewBag.accept = acceptUsers;
+
+                List<User> allUsers = dbContext.Users.ToList();
                 List<User> NotConnected = new List<User>();
-                foreach(User person in allUsers)
+                foreach(User person in allUsers)//adds any user that isnt loggedin or in the loggedin list<connection> into a list<user>
                 {
                     if(user.UserID == person.UserID)
                     {
                         continue;
                     }
-                    else if(user.MyConnections == null)
+                    else if(allConnections == null)
                     {
                         NotConnected.Add(person);
                     }
-                    else
+                    else if(!allConnections.Contains(person))
                     {
-                        if(!user.MyConnections.Contains(person))
-                        {
-                            NotConnected.Add(person);
-                        }
+                        NotConnected.Add(person);
                     }
                     
                 }
@@ -304,5 +337,106 @@ namespace theWall.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+        [HttpGet("addConnection/{userID:int}/{connectionID:int}")]
+        public IActionResult AddConnection(int userID, int connectionID)
+        {
+            if(HttpContext.Session.GetInt32("loggeduser") == userID)
+            {
+                User user = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
+                ViewBag.CurrentUser = user;
+                User newConnection = dbContext.Users.FirstOrDefault(cID => cID.UserID == connectionID);
+                
+                Connection newConn = new Connection(userID, userID, connectionID);
+                dbContext.Connections.Add(newConn);
+                Connection newConn2 = new Connection(userID, connectionID, userID);
+                dbContext.Connections.Add(newConn2);
+                dbContext.SaveChanges();
+                
+                return RedirectToAction("Connections", new{userID = userID});
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpGet("acceptConnection/{userID:int}/{connectionID:int}")]
+        public IActionResult AcceptConnection(int userID, int connectionID)
+        {
+            if(HttpContext.Session.GetInt32("loggeduser") == userID)
+            {
+                User user = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
+                ViewBag.CurrentUser = user;
+                User newConnection = dbContext.Users.FirstOrDefault(cID => cID.UserID == connectionID);
+
+                Connection userConn = dbContext.Connections.Where(uid => uid.UserID == userID).FirstOrDefault(fid => fid.FriendID == connectionID);
+                Connection requestConn = dbContext.Connections.Where(uid => uid.UserID == connectionID).FirstOrDefault(fid => fid.FriendID == userID);
+                
+                userConn.isConnected = true;
+                requestConn.isConnected = true;
+                dbContext.SaveChanges();
+                
+                return RedirectToAction("Connections", new{userID = userID});
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpGet("declineConnection/{userID:int}/{connectionID:int}")]
+        public IActionResult DeclineConnection(int userID, int connectionID)
+        {
+            if(HttpContext.Session.GetInt32("loggeduser") == userID)
+            {
+                User user = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
+                ViewBag.CurrentUser = user;
+                User newConnection = dbContext.Users.FirstOrDefault(cID => cID.UserID == connectionID);
+
+                Connection userConn = dbContext.Connections.Where(uid => uid.UserID == userID).FirstOrDefault(fid => fid.FriendID == connectionID);
+                Connection requestConn = dbContext.Connections.Where(uid => uid.UserID == connectionID).FirstOrDefault(fid => fid.FriendID == userID);
+                
+                dbContext.Remove(userConn);
+                dbContext.Remove(userConn);
+                dbContext.SaveChanges();
+                
+                return RedirectToAction("Connections", new{userID = userID});
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpGet("directMessaging/{userID:int}")]
+        public IActionResult DirectMessaging(int userID)
+        {
+            if(HttpContext.Session.GetInt32("loggeduser") == userID)
+            {
+                User user = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
+                ViewBag.CurrentUser = user;
+
+                List<Connection> UserConn = dbContext.Connections.Where(cid => cid.UserID == user.UserID).ToList();
+                List<User> allConnections = new List<User>();
+                foreach(Connection con in UserConn)//puts all user connections into a list
+                {
+                    if(con.isConnected)
+                    {
+                        User u = dbContext.Users.FirstOrDefault(fid => fid.UserID == con.FriendID);
+                        allConnections.Add(u);
+                    }
+                }
+                ViewBag.allConn = allConnections;
+
+                return View("DMs");
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        // [HttpGet("/account/")]
     }
 }

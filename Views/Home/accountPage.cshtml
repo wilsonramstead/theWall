@@ -27,7 +27,8 @@
                 <button class="btn button"><a href="/connections/@ViewBag.CurrentUser.UserID">0 | Connections</a></button>
                 @{
                     if(ViewBag.sessionID != ViewBag.CurrentUser.UserID) {
-                        <button class="btn btn-success"><a href="">Connect!</a></button>
+                        <button class="btn btn-success"><a href="/addConnection/@ViewBag.sessionID/@ViewBag.CurrentUser.UserID">Connect!</a></button>
+                        //added href, now button works
                     }
                 }
             </div>
