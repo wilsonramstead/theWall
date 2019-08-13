@@ -95,6 +95,12 @@ body {
     .form textarea {
         width: 90%;
     }
+    .userInfo form {
+        text-align: center;
+    }
+    .userInfo form textarea {
+        width: 80%;
+    }
     .headright {
         width: 53%;
         text-align: right;
@@ -144,9 +150,7 @@ body {
         width: 100%;
         border-radius: 0px 0px 10px 10px;
         padding-top: 10px;
-        /* padding-left: 2%; */
-        /* padding: 2%; */
-        padding-bottom: 20px;    
+        padding-bottom: 104px;    
         font-family: 'Blinker', sans-serif;
     }
     .bodyPost {
@@ -173,17 +177,18 @@ body {
     }
     .tags {
         width: 100%;
+        text-align: center;
     }
     .tags li {
         display: inline-block;
         padding-top: 5px;
     }
     ul {
-        margin-left: 0px;
+        margin-left: -5%;
     }
-    .middle {
-        padding-left: 5%;
-        padding-right: 5%;
+    .tags li {
+        display: inline-block;
+        padding: 6px 10px 0px 10px;
     }
     #navbar a {
         color: #2e2e2e;
@@ -201,7 +206,7 @@ body {
         min-height: 320px;
         width: 98%;
         border-radius: 10px;
-        padding-top: 40px;
+        padding-top: 10px;
         text-align: center;
     }
     .pic {
@@ -219,18 +224,12 @@ body {
     }
     .editLinks {
         display: block;
+        margin-bottom: 20px;
     }
-    .userInfo .editBtn {
+    .editBtn, .colorBtn {
         display: inline-block;
         color: white;
         font-size: 18px;
-        margin-left: 2%;
-    }
-    .userInfo .colorBtn {
-        display: inline-block;
-        color: white;
-        font-size: 18px;
-        margin-right: 2%;
     }
     .userInfo h2 {
         margin-top: 0px;
@@ -241,14 +240,6 @@ body {
         font-size: 20px;
         margin-bottom: 20px;
     }
-    .activity {
-        width: 79.2vw;
-        height: 50px;
-        background-color: #4f7eff;
-        padding: 11px;
-        color: black;
-        margin-left: -23px;
-    }
     hr {
         height: 1px;
         background-color: black;
@@ -256,6 +247,7 @@ body {
     .button {
         background-color: #4f7eff;
         color: white;
+        margin-top: 7px;
     }
     .userInfo h1 {
         display: inline-block;
@@ -272,7 +264,7 @@ body {
     }
     .picker{
         margin: auto;
-        width: 720px;
+        width: 90%;
         height: 180px;
     }
     #display {
@@ -459,16 +451,14 @@ body {
     }
     .editLinks {
         display: block;
+        text-align: right;
+        margin-right: 5%;
     }
-    .userInfo .editBtn {
-        margin-left: 4%;
+    .editBtn {
         color: white;
-        float: right;
-        margin-right: 10px;
         font-size: 18px;
     }
-    .userInfo .colorBtn {
-        float: right;
+    .colorBtn {
         color: white;
         font-size: 18px;
     }
@@ -497,7 +487,7 @@ body {
     .userNameEdit {
         height: 75px;
         width: 100%;
-        padding: 20px;
+        text-align: center;
         color: white;
     }
     .atSign {
@@ -505,7 +495,7 @@ body {
     }
     .picker{
         margin: auto;
-        width: 720px;
+        width: 90%;
         height: 180px;
     }
     #display {
@@ -532,11 +522,8 @@ body {
     .headright {
         width: 80%;
     }
-    .editLinks {
-        display: inline;
-    }
     .userInfo {
-        width: 71%;
+        width: 60%;
         display: inline-block;
     }
 }
