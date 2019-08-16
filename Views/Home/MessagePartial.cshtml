@@ -1,4 +1,7 @@
 
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
 @model Message
 
 <div class="bodyPost">
@@ -6,10 +9,26 @@
         <form asp-action="CreateMessage" asp-controller="Home" method="POST">
             <span asp-validation-for="Content"></span>
             <h4><label for="message">Post a message</label></h4>
-            <p><textarea asp-for="Content" id="message" rows="6" cols = "100"></textarea></p>
+            <p><textarea asp-for="Content" id="message" rows="6" cols = "100"  style="color: black;"></textarea></p>
             <input asp-for="UserID" value="@ViewBag.CurrentUser.UserID" type="hidden">
             <input asp-for="GroupID" value="1" type="hidden">
             <input class="btn button" type="Submit" value="Post message">
         </form>
     </div>
 </div>
+
+
+<script>
+    $(document).ready(function() {
+        $('.bodyPost').css('background', 'radial-gradient( at center, #dce5ff, rgb(10, 10, 50)');
+        $(".bodyPost").mousemove(function(event) {
+            var accountHeaderWidth = $(".bodyPost").width();
+            var accountHeaderHeight = $(".bodyPost").height();
+            var mouseXpercentage = Math.round(event.pageX / accountHeaderWidth * 100);
+            console.log("posX: ", event.pageX);
+            var mouseYpercentage = Math.round(event.pageY / accountHeaderHeight * 100);
+            console.log("posY: ", event.pageY);
+            $(".bodyPost").css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #e2e2e2, rgb(10, 10, 50))');
+        })
+    })
+</script>

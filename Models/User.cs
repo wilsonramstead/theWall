@@ -46,6 +46,6 @@ namespace theWall.Models
         public List<Message> allMessages {get;set;}
         public List<UserGroup> allGroups {get;set;}
         public List<Connection> MyConnections { get; set; }
-
+        public List<DM> DMs {get;set;}
     }
 }

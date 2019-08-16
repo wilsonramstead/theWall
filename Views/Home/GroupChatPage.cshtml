@@ -9,7 +9,7 @@
                 <form asp-action="NewGroupMessage" asp-controller="Home" method="POST">
                     <span asp-validation-for="Content"></span>
                     <h4><label for="message">Post a message</label></h4>
-                    <p><textarea asp-for="Content" id="message" rows="6" cols = "100"></textarea></p>
+                    <p><textarea asp-for="Content" id="message" rows="6" cols = "100"  style="color: black;"></textarea></p>
                     <input asp-for="UserID" value="@ViewBag.CurrentUser.UserID" type="hidden">
                     <input asp-for="GroupID" value="@ViewBag.CurrentGroup.GroupID" type="hidden">
                     <input class="btn button" type="Submit" value="Post message">
@@ -19,3 +19,18 @@
         <partial name="GroupChatPartial" view-data="ViewData"/>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('.bodyPost').css('background', 'radial-gradient( at center, #dce5ff, rgb(10, 10, 50)');
+        $(".bodyPost").mousemove(function(event) {
+            var accountHeaderWidth = $(".bodyPost").width();
+            var accountHeaderHeight = $(".bodyPost").height();
+            var mouseXpercentage = Math.round(event.pageX / accountHeaderWidth * 100);
+            console.log("posX: ", event.pageX);
+            var mouseYpercentage = Math.round(event.pageY / accountHeaderHeight * 100);
+            console.log("posY: ", event.pageY);
+            $(".bodyPost").css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #e2e2e2, rgb(10, 10, 50))');
+        })
+    })
+</script>

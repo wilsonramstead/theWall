@@ -1,22 +1,28 @@
 
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
 <div class="wrapper">
     <partial name="headerPartial" view-data="ViewData"/>
     <div class="body">
         <div class="connectBox">
-            <h2>Direct Messaging</h2> 
-            @{
-                if(ViewBag.allConn.Count > 0)
-                {
-                    foreach(User user in ViewBag.allConn)
+            <h2>Conversations</h2> 
+            <div class="chats">
+                @{
+                    if(ViewBag.allConn.Count > 0)
                     {
-                        <h4><a href="">@user.FirstName @user.LastName</a></h4><br>
+                        foreach(User user in ViewBag.allConn)
+                        {
+                            <h4><a id="user" href="/directmessage/@ViewBag.CurrentUser.UserID/@user.UserID">@user.FirstName @user.LastName</a></h4><br>
+                        }
+                    }
+                    else
+                    {
+                        <h4>Add some connections!</h4>
                     }
                 }
-                else
-                {
-                    <h4>Add some connections!</h4>
-                }
-            }
+            </div>
         </div>
     </div>
 </div>
+

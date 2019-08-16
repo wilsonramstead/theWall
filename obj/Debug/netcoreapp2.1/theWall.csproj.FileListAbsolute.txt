@@ -34,6 +34,7 @@
 /Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/editAccount.g.cshtml.cs
 /Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/changeColor.g.cshtml.cs
 /Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/DMs.g.cshtml.cs
+<<<<<<< HEAD
 C:\Users\ryan\Desktop\CodingDojo\PersonalProjects\theWall\bin\Debug\netcoreapp2.1\theWall.deps.json
 C:\Users\ryan\Desktop\CodingDojo\PersonalProjects\theWall\bin\Debug\netcoreapp2.1\theWall.runtimeconfig.json
 C:\Users\ryan\Desktop\CodingDojo\PersonalProjects\theWall\bin\Debug\netcoreapp2.1\theWall.runtimeconfig.dev.json
@@ -74,3 +75,7 @@ C:\Users\ryan\Desktop\CodingDojo\PersonalProjects\theWall\obj\Debug\netcoreapp2.
 C:\Users\ryan\Desktop\CodingDojo\PersonalProjects\theWall\obj\Debug\netcoreapp2.1\Razor\Views\Home\NewGroupPartial.g.cshtml.cs
 C:\Users\ryan\Desktop\CodingDojo\PersonalProjects\theWall\obj\Debug\netcoreapp2.1\Razor\Views\Home\GroupChatPage.g.cshtml.cs
 C:\Users\ryan\Desktop\CodingDojo\PersonalProjects\theWall\obj\Debug\netcoreapp2.1\Razor\Views\Home\GroupChatPartial.g.cshtml.cs
+=======
+/Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/conversations.g.cshtml.cs
+>>>>>>> b98745984f716af9f2870a0e0156944eff9376bc
+C:\Users\ryan\Desktop\CodingDojo\PersonalProjects\theWall\obj\Debug\netcoreapp2.1\Razor\Views\Home\conversations.g.cshtml.cs

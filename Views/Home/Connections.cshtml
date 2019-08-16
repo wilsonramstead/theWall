@@ -35,13 +35,13 @@
                         else if(ViewBag.accept.Contains(person))
                         {
                             <h4><a href="">@person.FirstName @person.LastName</a></h4>
-                            <button><a href="/acceptConnection/@ViewBag.CurrentUser.UserID/@person.UserID">Accept Request</a></button>
-                            <button><a href="/declineConnection/@ViewBag.CurrentUser.UserID/@person.UserID">Decline Request</a></button><br>
+                            <button class="btn btn-success"><a href="/acceptConnection/@ViewBag.CurrentUser.UserID/@person.UserID">Accept Request</a></button>
+                            <button class="btn btn-danger"><a href="/declineConnection/@ViewBag.CurrentUser.UserID/@person.UserID">Decline Request</a></button><br>
                         }
                         else
                         {
                             <h4><a href="">@person.FirstName @person.LastName</a></h4>
-                            <button><a href="/addConnection/@ViewBag.CurrentUser.UserID/@person.UserID">Add Connection</a></button><br>
+                            <button class="btn button"><a href="/addConnection/@ViewBag.CurrentUser.UserID/@person.UserID">Add Connection</a></button><br>
                         }
                     }
                 }

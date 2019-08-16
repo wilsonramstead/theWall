@@ -62,6 +62,33 @@ namespace theWall.Migrations
                     b.ToTable("Comments");
                 });
 
+            modelBuilder.Entity("theWall.Models.DM", b =>
+                {
+                    b.Property<int>("DmID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ConnectionID");
+
+                    b.Property<string>("Content")
+                        .IsRequired();
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<int?>("CreatorUserID");
+
+                    b.Property<int>("ReceiverID");
+
+                    b.Property<int>("SenderID");
+
+                    b.Property<DateTime>("UpdatedAt");
+
+                    b.HasKey("DmID");
+
+                    b.HasIndex("CreatorUserID");
+
+                    b.ToTable("DMs");
+                });
+
             modelBuilder.Entity("theWall.Models.Group", b =>
                 {
                     b.Property<int>("GroupID")
@@ -176,6 +203,13 @@ namespace theWall.Migrations
                         .WithMany("Comments")
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("theWall.Models.DM", b =>
+                {
+                    b.HasOne("theWall.Models.User", "Creator")
+                        .WithMany("DMs")
+                        .HasForeignKey("CreatorUserID");
                 });
 
             modelBuilder.Entity("theWall.Models.Message", b =>
