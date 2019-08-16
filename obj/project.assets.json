@@ -11575,23 +11575,23 @@
     ]
   },
   "packageFolders": {
-    "/Users/wilsonramstead/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\ryan\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/theWall.csproj",
+      "projectUniqueName": "c:\\Users\\ryan\\Desktop\\CodingDojo\\PersonalProjects\\theWall\\theWall.csproj",
       "projectName": "theWall",
-      "projectPath": "/Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/theWall.csproj",
-      "packagesPath": "/Users/wilsonramstead/.nuget/packages/",
-      "outputPath": "/Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/",
+      "projectPath": "c:\\Users\\ryan\\Desktop\\CodingDojo\\PersonalProjects\\theWall\\theWall.csproj",
+      "packagesPath": "C:\\Users\\ryan\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\ryan\\Desktop\\CodingDojo\\PersonalProjects\\theWall\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/wilsonramstead/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\ryan\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"

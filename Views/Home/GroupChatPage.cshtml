@@ -1,0 +1,21 @@
+@model Message
+
+<div class="wrapper">
+    <partial name="headerPartial" view-data="ViewData"/>
+    <div class="body">
+        <h2>@ViewBag.CurrentGroup.Name</h2>
+        <div class="bodyPost">
+            <div class="messageForm form">
+                <form asp-action="NewGroupMessage" asp-controller="Home" method="POST">
+                    <span asp-validation-for="Content"></span>
+                    <h4><label for="message">Post a message</label></h4>
+                    <p><textarea asp-for="Content" id="message" rows="6" cols = "100"></textarea></p>
+                    <input asp-for="UserID" value="@ViewBag.CurrentUser.UserID" type="hidden">
+                    <input asp-for="GroupID" value="@ViewBag.CurrentGroup.GroupID" type="hidden">
+                    <input class="btn button" type="Submit" value="Post message">
+                </form>
+            </div>
+        </div>
+        <partial name="GroupChatPartial" view-data="ViewData"/>
+    </div>
+</div>

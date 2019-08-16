@@ -21,7 +21,7 @@ namespace theWall.Models
         public int UserID {get;set;}
         public User Creator {get;set;}
         public List<Comment> Comments {get;set;}
-        public Group thisGroup {get;set;}
+        public int GroupID {get;set;}
 
     }
 }

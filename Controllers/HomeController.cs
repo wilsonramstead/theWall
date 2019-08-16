@@ -46,6 +46,22 @@ namespace theWall.Controllers
                     PasswordHasher<User> Hasher = new PasswordHasher<User>();
                     user.Password = Hasher.HashPassword(user, user.Password);
                     dbContext.Add(user);
+
+                    Group group = dbContext.Groups.FirstOrDefault(n => n.Name == "All");
+                    if(group == null)
+                    {
+                        Group newgroup = new Group("All");
+                        dbContext.Groups.Add(newgroup);
+                        UserGroup addSelf = new UserGroup(user.UserID, newgroup.GroupID);
+                        dbContext.UserGroups.Add(addSelf);
+                    }
+                    else
+                    {
+                        UserGroup addSelf = new UserGroup(user.UserID, group.GroupID);
+                        dbContext.UserGroups.Add(addSelf);
+                    }
+                    
+
                     dbContext.SaveChanges();
                     int userID = user.UserID;
                     HttpContext.Session.SetInt32("loggeduser", userID);
@@ -101,6 +117,7 @@ namespace theWall.Controllers
                     .Include(m => m.Creator)
                     .Include(m => m.Comments)
                     .ThenInclude(c => c.User)
+                    .Where(gid => gid.GroupID == 1)
                     .OrderByDescending(m => m.CreatedAt)
                     .ToList();
                 ViewBag.allMessages = allMessages;
@@ -437,6 +454,169 @@ namespace theWall.Controllers
             }
         }
 
-        // [HttpGet("/account/")]
+        [HttpGet("myNetwork/{userID:int}")]
+        public IActionResult MyNetwork(int userID)
+        {
+            if(HttpContext.Session.GetInt32("loggeduser") == userID)
+            {
+                User user = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
+                ViewBag.CurrentUser = user;
+
+                List<Connection> UserConn = dbContext.Connections.Where(cid => cid.UserID == user.UserID).ToList();
+                List<User> allConnections = new List<User>();
+                foreach(Connection con in UserConn)//puts all user connections into a list
+                {
+                    if(con.isConnected)
+                    {
+                        User u = dbContext.Users.FirstOrDefault(fid => fid.UserID == con.FriendID);
+                        allConnections.Add(u);
+                    }
+                }
+                ViewBag.allConn = allConnections;
+                ViewBag.message = HttpContext.Session.GetString("Message");
+
+                List<UserGroup> allGroupsConnections = dbContext.UserGroups.Where(uid => uid.UserID == userID).ToList();
+                List<Group> allMyGroups = new List<Group>();
+                foreach(UserGroup ug in allGroupsConnections)
+                {
+                    Group thisGroup = dbContext.Groups.FirstOrDefault(gid => gid.GroupID == ug.GroupID);
+                    if(thisGroup.Name == "All")
+                    {}
+                    else
+                    {
+                        allMyGroups.Add(thisGroup);
+                    }
+                }
+                ViewBag.allMyGroups = allMyGroups;
+
+                List<Group> allCreatedGroups = dbContext.Groups.Where(oid  => oid.OwnerID == userID).ToList();
+                ViewBag.usersGroups = allCreatedGroups;
+
+                return View("NetworkPage");
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost("createNewGroup/{userID:int}")]
+        public IActionResult CreateNewGroup(int userID, Group newgroup)
+        {
+            if(HttpContext.Session.GetInt32("loggeduser") == userID)
+            {
+                dbContext.Groups.Add(newgroup);
+                UserGroup addSelf = new UserGroup(userID, newgroup.GroupID);
+                dbContext.UserGroups.Add(addSelf);
+                dbContext.SaveChanges();
+                return RedirectToAction("MyNetwork", new {userID = userID});
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost("addToGroup/{userID:int}/{newAddID:int}")]
+        public IActionResult AddToGroup(int userID, int newAddID, UserGroup newJoin)
+        {
+            UserGroup check = dbContext.UserGroups.Where(uid => uid.UserID == newJoin.UserID).FirstOrDefault(gid => gid.GroupID == newJoin.GroupID);
+            if(check != null)
+            {
+                HttpContext.Session.SetString("Message", "User already in group.");
+                int? uuserID = HttpContext.Session.GetInt32("loggeduser");
+                return RedirectToAction("MyNetwork", new {userID = uuserID});
+            }
+            else
+            {
+                HttpContext.Session.SetString("Message", "");
+                dbContext.UserGroups.Add(newJoin);
+                User groupJoin = dbContext.Users.Include(ug => ug.allGroups).ThenInclude(g => g.Group).FirstOrDefault(uid => uid.UserID == userID);
+                dbContext.SaveChanges();
+                int? uuserID = HttpContext.Session.GetInt32("loggeduser");
+                return RedirectToAction("MyNetwork", new {userID = uuserID});
+            }
+        }
+
+        [HttpGet("groupChat/{userID:int}/{groupID:int}")]
+        public IActionResult GroupChat(int userID, int groupID)
+        {
+            if(HttpContext.Session.GetInt32("loggeduser") == userID)
+            {
+                User user = dbContext.Users.Include(ag => ag.allGroups).FirstOrDefault(u => u.UserID == userID);
+                ViewBag.CurrentUser = user;
+
+                Group group = dbContext.Groups.Include(gu => gu.GroupUsers).FirstOrDefault(g => g.GroupID == groupID);
+                ViewBag.CurrentGroup = group;
+
+                List<Message> groupMessages = dbContext.Messages
+                    .Include(m => m.Creator)
+                    .Include(m => m.Comments)
+                    .ThenInclude(c => c.User)
+                    .OrderByDescending(m => m.CreatedAt)
+                    .Where(tgid => tgid.GroupID == group.GroupID).ToList();
+                ViewBag.allMessages = groupMessages;
+
+                return View("GroupChatPage");
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost("newGroupMessage/{userID:int}/{groupID:int}")]
+        public IActionResult NewGroupMessage(int userID, int groupID, Message newMessage)
+        {
+            
+            if(ModelState.IsValid && HttpContext.Session.GetInt32("loggeduser") == userID)
+            {
+                dbContext.Messages.Add(newMessage);
+                dbContext.SaveChanges();
+                return RedirectToAction("GroupChat", new{userID = userID, groupID = groupID});
+            }
+            else if(!ModelState.IsValid && HttpContext.Session.GetInt32("loggeduser") == userID)
+            {
+                ModelState.AddModelError("message", "Unable to create message :|");
+                User user = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
+                ViewBag.CurrentUser = user;
+                return View("GroupChatPage");
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost("createGroupComment/{userID:int}/{groupID:int}")]
+        public IActionResult CreateGroupComment(int userID, int groupID, Comment comment)
+        {
+            if(ModelState.IsValid)
+            {
+                dbContext.Comments.Add(comment);
+                dbContext.SaveChanges();
+                return RedirectToAction("GroupChat", new{userID = userID, groupID = groupID});
+            }
+                
+            else
+            {
+                User user = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
+                ViewBag.CurrentUser = user;
+
+                List<Message> allMessages = dbContext.Messages
+                .Include(m => m.Creator)
+                .OrderByDescending(m => m.CreatedAt)
+                .ToList();
+                ViewBag.allMessages = allMessages;
+                
+                List<Comment> allComments = dbContext.Comments
+                .Include(c => c.Message)
+                .ToList();
+                ViewBag.allComments = allComments;
+
+                return View("GroupChatPage");
+            }
+        }
+
     }
 }

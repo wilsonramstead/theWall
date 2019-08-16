@@ -1,0 +1,10 @@
+@model Group
+
+<h2>Make a new Group</h2>
+<form asp-action="CreateNewGroup" asp-controller="Home" method="POST">
+    <span asp-validation-for="Name"></span>
+    <label for="Name">Group Name</label>
+    <input type="text" asp-for="Name">
+    <input type="hidden" asp-for="OwnerID" value="@ViewBag.CurrentUser.UserID">
+    <input type="submit" value="Create Group">
+</form>

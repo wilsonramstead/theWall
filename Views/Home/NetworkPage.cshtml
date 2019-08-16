@@ -1,0 +1,53 @@
+@model UserGroup
+
+<div class="wrapper">
+    <partial name="headerPartial" view-data="ViewData"/>
+    <div class="body">
+        <div class="column">
+        <h2>Connections</h2>
+        @{
+            if(ViewBag.allConn.Count > 0)
+            {
+                <p>@ViewBag.message</p>
+                foreach(User user in ViewBag.allConn)
+                {
+                    <h4><a href="">@user.FirstName @user.LastName</a></h4><br>
+                    
+                    @if(ViewBag.usersGroups.Count > 0)
+                    {
+                        <form asp-action="AddToGroup" asp-route-userID="@ViewBag.CurrentUser.UserID" asp-route-newAddID="@user.UserID" asp-controller="Home" method="POST">
+                            <select asp-for="GroupID" id="">
+                                @foreach(Group g in @ViewBag.usersGroups)
+                                {
+                                    <option value="@g.GroupID">@g.Name</option>
+                                }
+                            </select>
+                            <input type="hidden" asp-for="UserID" value="@user.UserID">
+                            <input type="submit" value="Add To Group">
+                        </form><br>
+                    }
+                    else
+                    {
+                    }
+                }
+            }
+            else
+            {
+                <h4>Add some connections!</h4>
+            }
+        }
+        </div>
+        <div class="column">
+            <partial name="NewGroupPartial" view-data="ViewData"/>
+        </div>
+        <div class="column" style="margin-left: 7%;">
+            <h2>My Groups</h2>
+            @{
+                foreach(Group g in ViewBag.allMyGroups)
+                {
+                    <h4><a href="/groupChat/@ViewBag.CurrentUser.UserID/@g.GroupID">@g.Name</a></h4><br>
+                }
+            }
+        </div>
+    </div>
+</div>

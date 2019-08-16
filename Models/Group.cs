@@ -8,11 +8,19 @@ namespace theWall.Models
     {
         [Key]
         public int GroupID {get;set;}
-
-        public string name {get;set;}
+        [Required]
+        public string Name {get;set;}
+        public int OwnerID {get;set;}
 
         public List<UserGroup> GroupUsers {get;set;}
 
         public List<Message> GroupMessages {get;set;}
+
+        public Group(string Name)
+        {
+            this.Name = Name;
+        }
+
+        public Group(){}
     }
 }

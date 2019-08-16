@@ -515,6 +515,14 @@ body {
     }    
 }
 
+    /* NETWORK PAGE */
+    /* ************************************************************** */
+    .column {
+        display: inline-block;
+        vertical-align: top;
+        width: 30%;
+    }
+
 @media only screen and (min-width: 992px) {
     .form textarea {
         width: 80%;

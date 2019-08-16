@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace theWall.Migrations
 {
-    public partial class firstmigration : Migration
+    public partial class Migration_1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,8 @@ namespace theWall.Migrations
                 {
                     GroupID = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: false),
+                    OwnerID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -76,23 +77,23 @@ namespace theWall.Migrations
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: false),
                     UserID = table.Column<int>(nullable: false),
-                    thisGroupGroupID = table.Column<int>(nullable: true)
+                    GroupID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Messages", x => x.MessageID);
+                    table.ForeignKey(
+                        name: "FK_Messages_Groups_GroupID",
+                        column: x => x.GroupID,
+                        principalTable: "Groups",
+                        principalColumn: "GroupID",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Messages_Users_UserID",
                         column: x => x.UserID,
                         principalTable: "Users",
                         principalColumn: "UserID",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Messages_Groups_thisGroupGroupID",
-                        column: x => x.thisGroupGroupID,
-                        principalTable: "Groups",
-                        principalColumn: "GroupID",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -166,14 +167,14 @@ namespace theWall.Migrations
                 column: "UserID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Messages_GroupID",
+                table: "Messages",
+                column: "GroupID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Messages_UserID",
                 table: "Messages",
                 column: "UserID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Messages_thisGroupGroupID",
-                table: "Messages",
-                column: "thisGroupGroupID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserGroups_GroupID",
@@ -201,10 +202,10 @@ namespace theWall.Migrations
                 name: "Messages");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Groups");
 
             migrationBuilder.DropTable(
-                name: "Groups");
+                name: "Users");
         }
     }
 }

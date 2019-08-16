@@ -18,5 +18,13 @@ namespace theWall.Models
 
         public Group Group {get;set;}
 
+        public UserGroup(int UserID, int GroupID)
+        {
+            this.UserID = UserID;
+            this.GroupID = GroupID;
+        }
+
+        public UserGroup()
+        {}
     }
 }
