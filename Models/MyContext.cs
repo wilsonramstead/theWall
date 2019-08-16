@@ -10,5 +10,6 @@ namespace theWall.Models
         public DbSet<Group> Groups {get;set;}
         public DbSet<UserGroup> UserGroups {get;set;}
         public DbSet<Connection> Connections {get;set;}
+        public DbSet<DM> DMs {get;set;}
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace theWall.Migrations
 {
-    public partial class firstmigration : Migration
+    public partial class firstmigrationsdf : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -64,6 +64,31 @@ namespace theWall.Migrations
                         principalTable: "Users",
                         principalColumn: "UserID",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DMs",
+                columns: table => new
+                {
+                    DmID = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Content = table.Column<string>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: false),
+                    ConnectionID = table.Column<int>(nullable: false),
+                    SenderID = table.Column<int>(nullable: false),
+                    ReceiverID = table.Column<int>(nullable: false),
+                    CreatorUserID = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DMs", x => x.DmID);
+                    table.ForeignKey(
+                        name: "FK_DMs_Users_CreatorUserID",
+                        column: x => x.CreatorUserID,
+                        principalTable: "Users",
+                        principalColumn: "UserID",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -166,6 +191,11 @@ namespace theWall.Migrations
                 column: "UserID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_DMs_CreatorUserID",
+                table: "DMs",
+                column: "CreatorUserID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Messages_UserID",
                 table: "Messages",
                 column: "UserID");
@@ -193,6 +223,9 @@ namespace theWall.Migrations
 
             migrationBuilder.DropTable(
                 name: "Connections");
+
+            migrationBuilder.DropTable(
+                name: "DMs");
 
             migrationBuilder.DropTable(
                 name: "UserGroups");

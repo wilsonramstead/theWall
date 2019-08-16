@@ -1,0 +1,35 @@
+
+@model DM
+
+<div class="wrapper">
+    <partial name="headerPartial" view-data="ViewData"/>
+    <div class="body">
+        <!-- <h1>Hello World!</h1> -->
+        <h3 class="center">@ViewBag.ReceivingUser.FirstName @ViewBag.ReceivingUser.LastName</h3>
+        <div class="DMs">
+                @{
+                    foreach(DM directMessage in ViewBag.allDMs) {
+                        DateTime newDate = directMessage.CreatedAt;
+                        var date = newDate.ToString("MMMM dd");
+                        var time = newDate.ToString("hh:mm tt");
+
+                        if(directMessage.SenderID == ViewBag.CurrentUser.UserID) {
+                            <!-- <p class="dmCreatedAt">@date at @time</p> -->
+                            <p class="senderMessage">@directMessage.Content</p>
+                        } else {
+                            <!-- <p class="dmCreatedAt">@date at @time</p> -->
+                            <p class="contactMessage">@directMessage.Content</p>
+                        }
+                    }
+                }
+        </div>
+        <form class="dmForm" asp-action="newDM" asp-route-SenderID="@ViewBag.CurrentUser.UserID" asp-route-ReceiverID="@ViewBag.ReceivingUser.UserID" asp-controller="Home" method="POST">
+            <p><input class="dmContent" asp-for="Content" type="text">
+            <input asp-for="ConnectionID" value="@ViewBag.Connection.ConnectionID" type="hidden">
+            <input asp-for="SenderID" type="hidden" value="@ViewBag.CurrentUser.UserID">
+            <input asp-for="ReceiverID" type="hidden" value="@ViewBag.ReceivingUser.UserID">
+            <input class="btn btn-success" type="submit" value="Send Message"></p>
+        </form>
+        <!-- <button class="btn btn-danger center">Back</button> -->
+    </div>
+</div>

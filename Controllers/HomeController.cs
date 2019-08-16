@@ -327,7 +327,6 @@ namespace theWall.Controllers
                     {
                         NotConnected.Add(person);
                     }
-                    
                 }
                 ViewBag.notConn = NotConnected;
                 return View("Connections");
@@ -428,7 +427,6 @@ namespace theWall.Controllers
                     }
                 }
                 ViewBag.allConn = allConnections;
-
                 return View("DMs");
             }
             else
@@ -437,6 +435,37 @@ namespace theWall.Controllers
             }
         }
 
-        // [HttpGet("/account/")]
+        [HttpGet("/directmessage/{SenderID:int}/{ReceiverID:int}")]
+        public IActionResult directMessage(int SenderID, int ReceiverID)
+        {
+            User currentUser = dbContext.Users.FirstOrDefault(u => u.UserID == SenderID);
+            ViewBag.CurrentUser = currentUser;
+
+            Connection connection = dbContext.Connections
+                .Where(c => c.UserID == SenderID || c.UserID == ReceiverID)
+                .FirstOrDefault(c => c.FriendID == SenderID || c.FriendID == ReceiverID);
+            ViewBag.Connection = connection;
+
+            List<DM> allDMs = dbContext.DMs
+                .Where(c => c.ConnectionID == connection.ConnectionID)
+                .ToList();
+            @ViewBag.allDMs = allDMs;
+
+            User receivingUser = dbContext.Users.FirstOrDefault(u => u.UserID == ReceiverID);
+            ViewBag.ReceivingUser = receivingUser;
+
+            return View("conversations");
+        }
+
+        [HttpPost("/newDM/{SenderID:int}/{ReceiverID:int}")]
+        public IActionResult newDM(int SenderID, int ReceiverID, DM directMessage)
+        {
+            dbContext.DMs.Add(directMessage);
+            dbContext.SaveChanges();
+
+            System.Console.WriteLine("Success!");
+
+            return RedirectToAction("directmessage", new {SenderID=SenderID, ReceiverID=ReceiverID});
+        }
     }
 }

@@ -154,7 +154,8 @@ body {
         font-family: 'Blinker', sans-serif;
     }
     .bodyPost {
-        background-image: linear-gradient(white, #e6e6e6);
+        background-color: rgb(10, 10, 50);
+
         height: 280px;
         padding: 2%;
         padding-top: 10px;
@@ -281,7 +282,90 @@ body {
     .center {
         text-align: center;
         margin-bottom: 20px;
-    }    
+    }
+    /* DMs messages page */
+    .DMs {
+        height: 350px;
+        width: 90%;
+        background-image: linear-gradient(white, #4f7eff);
+        border-radius: 15px 15px 0px 0px;
+        margin: auto;
+        overflow: auto;
+        padding: 20px;
+        font-size: 18px;
+    }
+    .dmForm {
+        width: 90%;
+        height: 120px;
+        background-color: #2e2e2e;
+        margin: auto;
+        border-radius: 0px 0px 15px 15px;
+        text-align: center;
+        padding: 10px;
+        font-size: 18px;
+    }
+    .dmForm input {
+        display: block;
+        margin: 10px auto;
+    }
+    .dmContent {
+        width: 80%;
+        /* margin-top: 10px; */
+        min-height: 40px;
+        border-radius: 15px;
+        font-size: 16px;
+        padding: 10px;
+        overflow-wrap: break-word;
+    }
+    /* .dmCreatedAt {
+        font-size: 12px;
+        color: red;
+    } */
+    .senderMessage {
+        margin-left: 60%;
+        min-height: 40px;
+        min-width: 20%;
+        max-width: 40%;
+        font-size: 14px;
+        background-color: #4f7eff;
+        /* color: white; */
+        margin-bottom: 10px;
+        border-radius: 15px;
+        padding: 10px;
+        overflow-wrap: break-word;
+    }
+    .contactMessage {
+        min-height: 40px;
+        padding: 10px;
+        min-width: 20%;
+        max-width: 40%;
+        font-size: 14px;
+        color: white;
+        background-color: #5cb85c;
+        border-radius: 15px;
+        overflow-wrap: break-word;
+    }
+    .chats {
+        height: 400px;
+        width: 50%;
+        margin: auto;
+        overflow: auto;
+    }
+    .chats h4 {
+        height: 50px;
+        width: 100%;
+        padding: 12px;
+        margin-top: 0px;
+        background-color: #ddd;
+        border: 3px solid #2e2e2e;
+    }
+    .connectBox {
+        margin: auto;
+        text-align: center;
+    }
+    .connectBox h2 {
+        margin-bottom: 20px;
+    }
 }
 
 @media only screen and (min-width: 481px) {
@@ -384,12 +468,18 @@ body {
         width: 100%;
         border-radius: 0px 0px 10px 10px;
         padding-top: 10px;
-        padding-left: 2%;
+        /* padding-left: 2%; */
         padding-bottom: 20px;    
         font-family: 'Blinker', sans-serif;
     }
+    .messages {
+        padding-left: 2%;
+    }
     .bodyPost {
-        background-image: linear-gradient(white, #e6e6e6);
+        /* background-image: linear-gradient(white, #e6e6e6); */
+
+        background: rgb(10, 10, 50);
+        color: white;
         height: 280px;
         padding-left: 2%;
         padding-top: 10px;
@@ -397,6 +487,12 @@ body {
     }
     .bodyPost label {
         font-size: 20px;    
+    }
+
+    .test {
+        width: 80%;
+        height: 400px;
+        background-color: pink;
     }
     
     /* NAVBAR */
@@ -513,6 +609,76 @@ body {
         text-align: center;
         margin-bottom: 20px;
     }    
+
+    /* DMs messages page */
+    .DMs {
+        height: 350px;
+        width: 90%;
+        background-image: linear-gradient(white, #4f7eff);
+        border-radius: 15px 15px 0px 0px;
+        margin: auto;
+        overflow: auto;
+        padding: 25px;
+        font-size: 18px;
+    }
+    .dmForm {
+        width: 90%;
+        height: 70px;
+        background-color: #2e2e2e;
+        margin: auto;
+        border-radius: 0px 0px 15px 15px;
+        text-align: center;
+        padding: 15px;
+        font-size: 18px;
+    }
+    .dmContent {
+        width: 66%;
+        height: 40px;
+        border-radius: 0px 10px 0px 10px;
+    }
+    .senderMessage {
+        margin-left: 70%;
+        min-height: 40px;
+        min-width: 10%;
+        max-width: 30%;
+        background-color: #4f7eff;
+        color: white;
+        border-radius: 15px;
+        padding: 10px;
+        overflow-wrap: break-word;
+    }
+
+    .contactMessage {
+        min-height: 40px;
+        padding: 10px;
+        min-width: 10%;
+        max-width: 30%;
+        color: white;
+        background-color: #5cb85c;
+        border-radius: 15px;
+        overflow-wrap: break-word;
+    }
+    .chats {
+        height: 400px;
+        width: 50%;
+        margin: auto;
+        overflow: auto;
+    }
+    .chats h4 {
+        height: 50px;
+        width: 100%;
+        padding: 12px;
+        margin-top: 0px;
+        background-color: #ddd;
+        border: 3px solid #2e2e2e;
+    }
+    .connectBox {
+        margin: auto;
+        text-align: center;
+    }
+    .connectBox h2 {
+        margin-bottom: 20px;
+    }
 }
 
 @media only screen and (min-width: 992px) {

@@ -70,3 +70,4 @@ C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.
 C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/theWall.csproj.CopyComplete
 C:/Users/ryan/Desktop/CodingDojo/PersonalProjects/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/DMs.g.cshtml.cs
 /Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/DMs.g.cshtml.cs
+/Users/wilsonramstead/Desktop/CodingDojo/stacks/C#/ORMs/belt_prep/theWall/obj/Debug/netcoreapp2.1/Razor/Views/Home/conversations.g.cshtml.cs
