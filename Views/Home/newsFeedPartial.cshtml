@@ -24,7 +24,7 @@
                         {
                             var commentDATE = c.CreatedAt.ToString("MMMM dd yyyy");
                             <div class="comContent">
-                                <h4>@c.User.FirstName @c.User.LastName- @commentDATE</h4>
+                                <h4><a href="/account/@c.UserID"><span class="atSign">@@</span>@c.User.UserName</a> - @commentDATE</h4>
                                 <p>@c.comContent</p>
                             </div>
                         }

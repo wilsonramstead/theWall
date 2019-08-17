@@ -3,8 +3,8 @@
 <div class="wrapper">
     <partial name="headerPartial" view-data="ViewData"/>
     <div class="body">
-        <h2>@ViewBag.CurrentGroup.Name</h2>
         <div class="bodyPost">
+            <h2 class="groupName glow">@ViewBag.CurrentGroup.Name</h2>
             <div class="messageForm form">
                 <form asp-action="NewGroupMessage" asp-controller="Home" method="POST">
                     <span asp-validation-for="Content"></span>

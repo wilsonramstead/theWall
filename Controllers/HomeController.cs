@@ -192,11 +192,15 @@ namespace theWall.Controllers
         [HttpGet("/account/{userID:int}")]
         public IActionResult Account(int userID)
         {
-            User user = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
-            int? session = HttpContext.Session.GetInt32("loggeduser");
-            int sessionID = session ?? default(int);
+            User viewUser = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
+            ViewBag.ViewUser = viewUser;
+            int? currentUserID = HttpContext.Session.GetInt32("loggeduser");
+            User currentUser = dbContext.Users.FirstOrDefault(u => u.UserID == currentUserID);
+            System.Console.WriteLine("currentUser: " + currentUser);
+            ViewBag.CurrentUser = currentUser;
+            int sessionID = currentUserID ?? default(int);
             ViewBag.sessionID = sessionID;
-            ViewBag.CurrentUser = user;
+
             List<Message> allMessages = dbContext.Messages
                 .Where(m => m.Creator.UserID == userID)
                 .Include(m => m.Creator)
@@ -213,7 +217,9 @@ namespace theWall.Controllers
             if(HttpContext.Session.GetInt32("loggeduser") == userID)
             {
                 User user = dbContext.Users.FirstOrDefault(u => u.UserID == userID);
-                ViewBag.CurrentUser = user;  
+                ViewBag.CurrentUser = user;
+                // int? currentUser = HttpContext.Session.GetInt32("loggeduser");
+                // ViewBag.CurrentUser = currentUser;  
                 List<User> allConnections = dbContext.Users.ToList(); //needs to change from all users to all user connections
                 ViewBag.allConn = allConnections;
                 return View("editAccount", user);

@@ -5,6 +5,7 @@
 @model Message
 
 <div class="bodyPost">
+    <h2 class="groupName glow">Public Chatroom</h2>
     <div class="messageForm form">
         <form asp-action="CreateMessage" asp-controller="Home" method="POST">
             <span asp-validation-for="Content"></span>

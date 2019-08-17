@@ -8,7 +8,7 @@
     <div class="body">
         <div class="accountHeader">
             @{
-                if(ViewBag.sessionID == ViewBag.CurrentUser.UserID) {
+                if(ViewBag.ViewUser.UserID == ViewBag.CurrentUser.UserID) {
                     <div class="editLinks">
                         <a class="colorBtn" href="/account/color/@ViewBag.CurrentUser.UserID">Change Color</a>
                         <span> | </span>
@@ -19,16 +19,16 @@
             <img class="pic" src="~/images/defaultpic.jpg" alt="Users account profile picture">
             <div class="userInfo">
                 <div class="userNameEdit">
-                    <h1>@@@ViewBag.CurrentUser.UserName</h1>
+                    <h1 class="accountGlow">@@@ViewBag.ViewUser.UserName</h1>
                 </div>
                 <h4>Name: </h4>
-                <h2>@ViewBag.CurrentUser.FirstName @ViewBag.CurrentUser.LastName</h2>
+                <h2>@ViewBag.ViewUser.FirstName @ViewBag.ViewUser.LastName</h2>
                 <h4>Bio: </h4>
-                <p>@ViewBag.CurrentUser.Bio</p>
-                <button class="btn button"><a href="/connections/@ViewBag.CurrentUser.UserID">0 | Connections</a></button>
+                <p>@ViewBag.ViewUser.Bio</p>
+                <button class="btn button"><a href="/connections/@ViewBag.ViewUser.UserID">0 | Connections</a></button>
                 @{
                     if(ViewBag.sessionID != ViewBag.CurrentUser.UserID) {
-                        <button class="btn btn-success"><a href="/addConnection/@ViewBag.sessionID/@ViewBag.CurrentUser.UserID">Connect!</a></button>
+                        <button class="btn btn-success"><a href="/addConnection/@ViewBag.CurrentUser/@ViewBag.ViewUser.UserID">Connect!</a></button>
                         //added href, now button works
                     }
                 }

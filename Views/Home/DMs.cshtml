@@ -6,7 +6,7 @@
     <partial name="headerPartial" view-data="ViewData"/>
     <div class="body">
         <div class="connectBox">
-            <h2>Conversations</h2> 
+            <h2 class="glow">Conversations</h2> 
             <div class="chats">
                 @{
                     if(ViewBag.allConn.Count > 0)
@@ -26,3 +26,17 @@
     </div>
 </div>
 
+<script>
+    $(document).ready(function() {
+        $('.connectBox').css('background', 'radial-gradient( at center, #dce5ff, #4f7eff');
+        $(".connectBox").mousemove(function(event) {
+            var accountHeaderWidth = $(".connectBox").width();
+            var accountHeaderHeight = $(".connectBox").height();
+            var mouseXpercentage = Math.round(event.pageX / accountHeaderWidth * 100);
+            console.log("posX: ", event.pageX);
+            var mouseYpercentage = Math.round(event.pageY / accountHeaderHeight * 100);
+            console.log("posY: ", event.pageY);
+            $(".connectBox").css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #e2e2e2, #4f7eff)');
+        })
+    })
+</script>
