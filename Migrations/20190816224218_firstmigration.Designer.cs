@@ -9,8 +9,8 @@ using theWall.Models;
 namespace theWall.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20190816210817_Migration_1")]
-    partial class Migration_1
+    [Migration("20190816224218_firstmigration")]
+    partial class firstmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

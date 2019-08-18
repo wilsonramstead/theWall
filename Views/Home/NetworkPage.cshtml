@@ -1,9 +1,12 @@
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
 @model UserGroup
 
 <div class="wrapper">
     <partial name="headerPartial" view-data="ViewData"/>
     <div class="body">
-        <div class="column">
+        <div class="connectBox">
+            <div class="column">
         <h2>Connections</h2>
         @{
             if(ViewBag.allConn.Count > 0)
@@ -23,7 +26,7 @@
                                 }
                             </select>
                             <input type="hidden" asp-for="UserID" value="@user.UserID">
-                            <input type="submit" value="Add To Group">
+                            <input class='btn btn-primary' type="submit" value="Add To Group">
                         </form><br>
                     }
                     else
@@ -49,5 +52,21 @@
                 }
             }
         </div>
+        </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('.connectBox').css('background', 'radial-gradient( at center, #dce5ff, #4f7eff');
+        $(".connectBox").mousemove(function(event) {
+            var accountHeaderWidth = $(".connectBox").width();
+            var accountHeaderHeight = $(".connectBox").height();
+            var mouseXpercentage = Math.round(event.pageX / accountHeaderWidth * 100);
+            console.log("posX: ", event.pageX);
+            var mouseYpercentage = Math.round(event.pageY / accountHeaderHeight * 100);
+            console.log("posY: ", event.pageY);
+            $(".connectBox").css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #e2e2e2, #4f7eff)');
+        })
+    })
+</script>
