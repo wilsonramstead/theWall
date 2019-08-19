@@ -53,8 +53,13 @@ using theWall.Models;
             BeginContext(18, 137, true);
             WriteLiteral("\n<!-- This code is for an individual user viewing their connections, and eventually viewing their profiles -->\n<div class=\"wrapper\">\n    ");
             EndContext();
+<<<<<<< HEAD
             BeginContext(155, 52, false);
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "3cbc89eaf933484cafd0ed073d483844", async() => {
+=======
+            BeginContext(159, 52, false);
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "93bf31d0864a4f64b118b1abd87060b0", async() => {
+>>>>>>> ec44609c79b91e282645d80aff847cff440a7488
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();
