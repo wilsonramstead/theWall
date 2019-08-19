@@ -25,7 +25,9 @@
                 <h2>@ViewBag.ViewUser.FirstName @ViewBag.ViewUser.LastName</h2>
                 <h4>Bio: </h4>
                 <p>@ViewBag.ViewUser.Bio</p>
-                <button class="btn button"><a href="/connections/@ViewBag.ViewUser.UserID">0 | Connections</a></button>
+                @{
+                    <button class="btn button"><a href="/connections/@ViewBag.CurrentUser.UserID">@ViewBag.NumConn | Connections</a></button>
+                }
                 @{
                     if(ViewBag.sessionID != ViewBag.CurrentUser.UserID) {
                         <button class="btn btn-success"><a href="/addConnection/@ViewBag.CurrentUser/@ViewBag.ViewUser.UserID">Connect!</a></button>

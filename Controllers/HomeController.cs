@@ -209,6 +209,8 @@ namespace theWall.Controllers
                 .OrderByDescending(m => m.CreatedAt)
                 .ToList();
             ViewBag.allMessages = allMessages;
+            List<Connection> NumConn = dbContext.Connections.Where(uid => uid.UserID == userID).Where(ic => ic.isConnected == true).ToList();
+            ViewBag.NumConn = NumConn.Count();
             return View("accountPage");
         }
         [HttpGet("/account/edit/{userID:int}")]

@@ -7,7 +7,7 @@
     <div class="body">
         <div class="connectBox">
             <div class="column">
-        <h2>Connections</h2>
+        <h2 class='glow'>Connections</h2>
         @{
             if(ViewBag.allConn.Count > 0)
             {
@@ -44,7 +44,7 @@
             <partial name="NewGroupPartial" view-data="ViewData"/>
         </div>
         <div class="column" style="margin-left: 7%;">
-            <h2>My Groups</h2>
+            <h2 class='glow'>My Groups</h2>
             @{
                 foreach(Group g in ViewBag.allMyGroups)
                 {
