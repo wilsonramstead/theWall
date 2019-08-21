@@ -44,10 +44,10 @@
 </div>
 
 <script>
-    var currentUser = '@(ViewBag.CurrentUser)';
-    var colorRed = '@(ViewBag.CurrentUser.ColorRed)';
-    var colorGreen = '@(ViewBag.CurrentUser.ColorGreen)';
-    var colorBlue = '@(ViewBag.CurrentUser.ColorBlue)';
+    var currentUser = '@(ViewBag.ViewUser)';
+    var colorRed = '@(ViewBag.ViewUser.ColorRed)';
+    var colorGreen = '@(ViewBag.ViewUser.ColorGreen)';
+    var colorBlue = '@(ViewBag.ViewUser.ColorBlue)';
     $(document).ready(function() {
         $('.accountHeader').css('background', 'rgb(' + colorRed + ', ' + colorGreen + ', ' + colorBlue + ')');
         $('.accountHeader').css('background', 'radial-gradient( at center, #dce5ff, rgb(' + colorRed + ', ' + colorGreen + ', ' + colorBlue + ')');
